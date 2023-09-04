@@ -30,7 +30,7 @@ public class CmdSetRelation extends FCommand {
     public void perform(CommandContext context) {
         Relation relation = Relation.fromString(context.argAsString(0));
 
-        if (relation == Relation.MEMBER || relation == null) {
+        if(relation == Relation.MEMBER || relation == null) {
             FactionsPlugin.getInstance().cmdAutoHelp.execute(context);
             return;
         }
@@ -38,7 +38,7 @@ public class CmdSetRelation extends FCommand {
         Faction fac1 = context.argAsFaction(1);
         Faction fac2 = context.argAsFaction(2);
 
-        if (fac1 == null || fac2 == null || fac1.isSystemFaction() || fac2.isSystemFaction()) {
+        if(fac1 == null || fac2 == null || fac1.isSystemFaction() || fac2.isSystemFaction()) {
             FactionsPlugin.getInstance().cmdAutoHelp.execute(context);
             return;
         }

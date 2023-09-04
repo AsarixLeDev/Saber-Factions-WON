@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CC {
-    private static final char[] VALID_CODES = "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".toCharArray();
     public static String Black = ChatColor.BLACK.toString();
     public static String BlackB = ChatColor.BLACK + ChatColor.BOLD.toString();
     public static String BlackI = ChatColor.BLACK + ChatColor.ITALIC.toString();
@@ -84,6 +83,8 @@ public class CC {
     public static String Go = GreenB + "<!> " + Green;
     public static String Wait = YellowB + "<!> " + Yellow;
     public static String Stop = RedB + "<!> " + Red;
+
+    private static final char[] VALID_CODES = "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".toCharArray();
     private static long VALID_MASK = 0;
 
     static {

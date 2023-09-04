@@ -18,8 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 public class FactionLogs {
-    public static SimpleDateFormat format = new SimpleDateFormat("MM/dd hh:mmaa"); //MM/dd hh:mmaa
-    private final Map<FLogType, LinkedList<FactionLog>> mostRecentLogs = new ConcurrentHashMap<>();
+    public static transient SimpleDateFormat format = new SimpleDateFormat("MM/dd hh:mmaa"); //MM/dd hh:mmaa
+    private Map<FLogType, LinkedList<FactionLog>> mostRecentLogs = new ConcurrentHashMap<>();
 
     public FactionLogs() {
     }
@@ -78,8 +78,8 @@ public class FactionLogs {
     }
 
     public static class FactionLog {
-        private final long t;
-        private final List<String> a;
+        private long t;
+        private List<String> a;
 
         public FactionLog(long t, List<String> a) {
             this.t = t;

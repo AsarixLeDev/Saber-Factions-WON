@@ -4,8 +4,8 @@ package com.massivecraft.factions.cmd.reserve;
  * @author Saser
  */
 public class ReserveObject {
-    private final String name;
-    private final String factionName;
+    private String name;
+    private String factionName;
 
     public ReserveObject(String name, String factionName) {
         this.name = name;

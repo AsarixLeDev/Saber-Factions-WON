@@ -62,7 +62,7 @@ public class FScoreboard {
         FScoreboard fboard = fscoreboards.remove(fplayer);
 
         if (fboard != null) {
-            if (Bukkit.getScoreboardManager() != null) {
+            if(Bukkit.getScoreboardManager() != null) {
                 if (fboard.scoreboard == player.getScoreboard()) { // No equals method implemented, so may as well skip a nullcheck
                     player.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
                 }

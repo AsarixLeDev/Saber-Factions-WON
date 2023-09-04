@@ -14,13 +14,13 @@ import java.util.*;
 public class Conf {
 
     // Region Style
-    public static final String DYNMAP_STYLE_LINE_COLOR = "#00FF00";
-    public static final double DYNMAP_STYLE_LINE_OPACITY = 0.8D;
-    public static final int DYNMAP_STYLE_LINE_WEIGHT = 3;
-    public static final String DYNMAP_STYLE_FILL_COLOR = "#00FF00";
-    public static final double DYNMAP_STYLE_FILL_OPACITY = 0.35D;
-    public static final String DYNMAP_STYLE_HOME_MARKER = "greenflag";
-    public static final boolean DYNMAP_STYLE_BOOST = false;
+    public static final transient String DYNMAP_STYLE_LINE_COLOR = "#00FF00";
+    public static final transient double DYNMAP_STYLE_LINE_OPACITY = 0.8D;
+    public static final transient int DYNMAP_STYLE_LINE_WEIGHT = 3;
+    public static final transient String DYNMAP_STYLE_FILL_COLOR = "#00FF00";
+    public static final transient double DYNMAP_STYLE_FILL_OPACITY = 0.35D;
+    public static final transient String DYNMAP_STYLE_HOME_MARKER = "greenflag";
+    public static final transient boolean DYNMAP_STYLE_BOOST = false;
     public static List<String> baseCommandAliases = new ArrayList<>();
     public static String serverTimeZone = "EST";
     public static boolean allowNoSlashCommand = true;
@@ -71,7 +71,7 @@ public class Conf {
     public static boolean factionOnlyChat = true;
     // Configuration on the Faction tag in chat messages.
     public static boolean chatTagEnabled = true;
-    public static boolean chatTagHandledByAnotherPlugin = false;
+    public static transient boolean chatTagHandledByAnotherPlugin = false;
     public static boolean chatTagRelationColored = true;
     public static List<String> blacklistedFactionNames = new ArrayList<>();
     public static String allowedFactionNameCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -272,7 +272,7 @@ public class Conf {
     public static Set<Material> territoryDenyUsageMaterials = EnumSet.noneOf(Material.class);
     //public static Set<Material> territoryProtectedMaterialsWhenOffline = EnumSet.noneOf(Material.class);
     //public static Set<Material> territoryDenyUsageMaterialsWhenOffline = EnumSet.noneOf(Material.class);
-    public static Set<EntityType> safeZoneNerfedCreatureTypes = EnumSet.noneOf(EntityType.class);
+    public static transient Set<EntityType> safeZoneNerfedCreatureTypes = EnumSet.noneOf(EntityType.class);
     /// <summary>
     /// This defines a set of materials which should always be allowed to use, regardless of factions permissions.
     /// Useful for HCF features.
@@ -405,7 +405,7 @@ public class Conf {
     // Taller and wider for "bigger f map"
     public static int mapHeight = 17;
     public static int mapWidth = 49;
-    public static char[] mapKeyChrs = "\\/#$%=&^ABCDEFGHJKLMNOPQRSTUVWXYZ1234567890abcdeghjmnopqrsuvwxyz?".toCharArray();
+    public static transient char[] mapKeyChrs = "\\/#$%=&^ABCDEFGHJKLMNOPQRSTUVWXYZ1234567890abcdeghjmnopqrsuvwxyz?".toCharArray();
 
 
     //Cooldown for /f logout in seconds
@@ -423,7 +423,7 @@ public class Conf {
     public static HashMap<String, DefaultPermissions> defaultFactionPermissions = new HashMap<>();
     public static HashSet<PermissableAction> lockedPermissions = new HashSet<>();
 
-    private static final Conf i = new Conf();
+    private static transient Conf i = new Conf();
 
     static {
         lockedPermissions.add(PermissableAction.CHEST);
@@ -468,18 +468,18 @@ public class Conf {
         }
 
         territoryDenyUsageMaterials.add(XMaterial.FLINT_AND_STEEL.parseMaterial());
-        if (FactionsPlugin.getInstance().version != 8) {
+        if(FactionsPlugin.getInstance().version != 8) {
             territoryDenyUsageMaterials.add(XMaterial.END_CRYSTAL.parseMaterial());
         }
         territoryDenyUsageMaterials.add(XMaterial.BUCKET.parseMaterial());
         territoryDenyUsageMaterials.add(XMaterial.WATER_BUCKET.parseMaterial());
         territoryDenyUsageMaterials.add(XMaterial.LAVA_BUCKET.parseMaterial());
 
-        if (FactionsPlugin.getInstance().version == 8) {
+        if(FactionsPlugin.getInstance().version == 8) {
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("BOAT").get().parseMaterial());
         }
 
-        if (FactionsPlugin.getInstance().version >= 9) {
+        if(FactionsPlugin.getInstance().version >= 9) {
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("ACACIA_BOAT").get().parseMaterial());
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("BIRCH_BOAT").get().parseMaterial());
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("DARK_OAK_BOAT").get().parseMaterial());
@@ -488,11 +488,11 @@ public class Conf {
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("SPRUCE_BOAT").get().parseMaterial());
         }
 
-        if (FactionsPlugin.getInstance().version >= 19) {
+        if(FactionsPlugin.getInstance().version >= 19) {
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("MANGROVE_BOAT").get().parseMaterial());
         }
 
-        if (FactionsPlugin.getInstance().version >= 20) {
+        if(FactionsPlugin.getInstance().version >= 20) {
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("BAMBOO_RAFT").get().parseMaterial());
             territoryDenyUsageMaterials.add(XMaterial.matchXMaterial("CHERRY_BOAT").get().parseMaterial());
         }
@@ -565,6 +565,7 @@ public class Conf {
     public enum Backend {
         JSON,
         //MYSQL,  TODO add MySQL storage
+        ;
     }
 }
 

@@ -17,7 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class BookDisenchant implements Listener {
 
-    private static final ItemStack EMPTY_BOOK = new ItemStack(Material.BOOK, 1);
+    private static ItemStack EMPTY_BOOK = new ItemStack(Material.BOOK, 1);
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onPlayerInteract(PlayerInteractEvent event) {

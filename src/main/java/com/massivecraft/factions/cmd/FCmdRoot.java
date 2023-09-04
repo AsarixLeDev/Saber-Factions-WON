@@ -7,6 +7,7 @@ import com.massivecraft.factions.cmd.audit.CmdAudit;
 import com.massivecraft.factions.cmd.banner.CmdBanner;
 import com.massivecraft.factions.cmd.banner.CmdTpBanner;
 import com.massivecraft.factions.cmd.check.CmdCheck;
+import com.massivecraft.factions.cmd.check.CmdWeeWoo;
 import com.massivecraft.factions.cmd.chest.CmdChest;
 import com.massivecraft.factions.cmd.claim.*;
 import com.massivecraft.factions.cmd.drain.CmdDrain;
@@ -324,7 +325,7 @@ public class FCmdRoot extends FCommand implements CommandExecutor {
     public void addVariableCommands() {
 
         Bukkit.getScheduler().runTaskLater(FactionsPlugin.getInstance(), () -> {
-            if (FactionsPlugin.getInstance().getFactionsAddonHashMap().containsKey("Roster")) {
+            if(FactionsPlugin.getInstance().getFactionsAddonHashMap().containsKey("Roster")) {
                 this.subCommands.remove(this.cmdInvite);
                 this.subCommands.remove(this.cmdJoin);
                 this.subCommands.remove(this.cmdKick);
@@ -337,7 +338,7 @@ public class FCmdRoot extends FCommand implements CommandExecutor {
             this.addSubCommand(this.cmdBanner);
         }
 
-        //Reserve
+            //Reserve
         if (Conf.useReserveSystem) {
             this.addSubCommand(this.cmdReserve);
         }
@@ -351,11 +352,11 @@ public class FCmdRoot extends FCommand implements CommandExecutor {
         //Check
         if (Conf.useCheckSystem && !checkEnabled) {
             this.addSubCommand(this.cmdCheck);
-            // this.addSubCommand(this.cmdWeeWoo);
+           // this.addSubCommand(this.cmdWeeWoo);
             checkEnabled = true;
         }
 
-        if (FactionsPlugin.getInstance().getConfig().getBoolean("see-chunk.Enabled")) {
+        if(FactionsPlugin.getInstance().getConfig().getBoolean("see-chunk.Enabled")) {
             this.addSubCommand(this.cmdSeeChunk);
         }
 
@@ -369,9 +370,9 @@ public class FCmdRoot extends FCommand implements CommandExecutor {
         //}
         //FTOP
         if ((Bukkit.getServer().getPluginManager().getPlugin("FactionsTop") != null || Bukkit.getServer().getPluginManager().getPlugin("SavageFTOP") != null || Bukkit.getServer().getPluginManager().getPlugin("SaberFTOP") != null) && !internalFTOPEnabled) {
-            Logger.print("Found FactionsTop plugin. Disabling our own /f top command.", Logger.PrefixType.DEFAULT);
+            Logger.print( "Found FactionsTop plugin. Disabling our own /f top command.", Logger.PrefixType.DEFAULT);
         } else {
-            Logger.print("Internal Factions Top Being Used. NOTE: Very Basic", Logger.PrefixType.DEFAULT);
+            Logger.print( "Internal Factions Top Being Used. NOTE: Very Basic", Logger.PrefixType.DEFAULT);
             this.addSubCommand(this.cmdTop);
             internalFTOPEnabled = true;
         }

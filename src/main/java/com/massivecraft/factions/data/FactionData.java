@@ -58,7 +58,7 @@ public class FactionData {
 
     public boolean hasValue(String key) {
         boolean value = hasConfigValue(key) || hasStoredValue(key);
-        if (!value) {
+        if(!value) {
             setDefaultPath(key, null);
         }
         return value;
@@ -85,7 +85,7 @@ public class FactionData {
         File file = new File(FactionsPlugin.getInstance().getDataFolder() + "/faction-data/"
                 + this.factionID + ".yml");
 
-        if (file.delete()) {
+        if(file.delete()) {
             Logger.print("Deleting faction-data for faction " + faction.getTag(), Logger.PrefixType.DEFAULT);
         } else {
             Logger.print("Failed to delete faction-data for faction " + faction.getTag(), Logger.PrefixType.WARNING);
@@ -93,7 +93,7 @@ public class FactionData {
     }
 
     public void save() {
-        if (this.isSaving()) {
+        if(this.isSaving()) {
             return;
         }
         this.saving = true;

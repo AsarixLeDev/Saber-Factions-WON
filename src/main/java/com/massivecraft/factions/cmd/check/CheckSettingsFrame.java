@@ -22,9 +22,9 @@ public class CheckSettingsFrame implements InventoryHolder, FactionGUI {
      * @author Driftay
      */
 
-    private final FactionsPlugin plugin;
-    private final FPlayer fPlayer;
-    private final Inventory inventory;
+    private FactionsPlugin plugin;
+    private FPlayer fPlayer;
+    private Inventory inventory;
 
     public CheckSettingsFrame(FactionsPlugin plugin, FPlayer fPlayer) {
         this.plugin = plugin;

@@ -30,9 +30,10 @@ public enum Relation implements Permissable {
     NEUTRAL(1, TL.RELATION_NEUTRAL_SINGULAR.toString()),
     ENEMY(0, TL.RELATION_ENEMY_SINGULAR.toString());
 
-    public static Relation[] VALUES = values();
     public final int value;
     public final String nicename;
+
+    public static Relation[] VALUES = values();
 
     Relation(final int value, final String nicename) {
         this.value = value;

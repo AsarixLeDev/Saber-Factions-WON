@@ -51,8 +51,9 @@ public enum PermissableAction {
     CHECK("check"),
     SPAWNER("spawner");
 
+    private String name;
+
     public static PermissableAction[] VALUES = values();
-    private final String name;
 
 
     PermissableAction(String name) {

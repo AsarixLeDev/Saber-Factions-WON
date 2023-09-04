@@ -46,8 +46,9 @@ public class UUIDFetcher {
 
     public static final class FetchingSession {
 
-        private static final JSONParser JSON_PARSER = new JSONParser();
         private final List<String> usernames;
+
+        private static final JSONParser JSON_PARSER = new JSONParser();
 
         public FetchingSession(List<String> usernames) {
             this.usernames = new ArrayList<>(usernames);

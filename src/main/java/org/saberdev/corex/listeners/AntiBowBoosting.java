@@ -15,7 +15,7 @@ public class AntiBowBoosting implements Listener {
         Entity damager = e.getDamager();
         if (!(damager instanceof Arrow))
             return;
-        Arrow arrow = (Arrow) damager;
+        Arrow arrow = (Arrow)damager;
         ProjectileSource shooter = arrow.getShooter();
         if (!(shooter instanceof org.bukkit.entity.Player))
             return;

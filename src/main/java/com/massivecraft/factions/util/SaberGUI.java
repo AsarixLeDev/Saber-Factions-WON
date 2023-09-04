@@ -26,7 +26,7 @@ public abstract class SaberGUI {
     protected int size;
     protected Player player;
     protected Inventory inventory;
-    private final ConcurrentMap<Integer, InventoryItem> inventoryItems;
+    private ConcurrentMap<Integer, InventoryItem> inventoryItems;
     private String owningPluginName;
     private Runnable closeRunnable;
 

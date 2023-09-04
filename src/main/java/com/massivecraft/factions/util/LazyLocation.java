@@ -38,7 +38,7 @@ public final class LazyLocation implements Serializable {
         this.yaw = yaw;
         this.pitch = pitch;
     }
-
+    
     @Nullable
     public Location getLocation() {
         if (this.location == null) {

@@ -11,7 +11,7 @@ public class FPlayerLeaveEvent extends FactionPlayerEvent implements Cancellable
      */
 
     boolean cancelled = false;
-    private final PlayerLeaveReason reason;
+    private PlayerLeaveReason reason;
 
     public FPlayerLeaveEvent(FPlayer p, Faction f, PlayerLeaveReason r) {
         super(f, p);

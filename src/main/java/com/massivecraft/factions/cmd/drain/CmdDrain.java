@@ -40,7 +40,7 @@ public class CmdDrain extends FCommand {
             context.fPlayer.msg(TL.GENERIC_DISABLED, "Factions Drain");
             return;
         }
-        if (Cooldown.isOnCooldown(context.player, "drainCooldown")) {
+        if(Cooldown.isOnCooldown(context.player, "drainCooldown")) {
             long remaining = context.player.getMetadata("drainCooldown").get(0).asLong() - System.currentTimeMillis();
             int remainSec = (int) (remaining / 1000L);
             context.msg(CC.translate(TL.COMMAND_DRAIN_COOLDOWN.toString().replace("{seconds}", TimeUtil.formatSeconds(remainSec))));
@@ -86,7 +86,7 @@ public class CmdDrain extends FCommand {
             }
         }
 
-        if (useRoleDrain) {
+        if(useRoleDrain) {
             context.msg(TL.COMMAND_DRAIN_ROLE_DRAINED_AMOUNT, roleToDrain, calculatedAmount);
         } else {
             context.msg(TL.COMMAND_DRAIN_RECIEVED_AMOUNT, calculatedAmount);

@@ -18,11 +18,11 @@ import java.util.Map;
 
 public class FactionWarpsFrame extends SaberGUI {
 
-    private final ConfigurationSection section;
-    private final Faction f;
+    private ConfigurationSection section;;
+    private Faction f;
 
     public FactionWarpsFrame(Player player, Faction f) {
-        super(player, CC.translate(FactionsPlugin.getInstance().getConfig().getString("fwarp-gui.name").replace("{faction}", f.getTag())), FactionsPlugin.getInstance().getConfig().getInt("fwarp-gui.rows", 3) * 9);
+        super(player, CC.translate(FactionsPlugin.getInstance().getConfig().getString("fwarp-gui.name").replace("{faction}", f.getTag())),FactionsPlugin.getInstance().getConfig().getInt("fwarp-gui.rows", 3) * 9);
         this.section = FactionsPlugin.getInstance().getConfig().getConfigurationSection("fwarp-gui");
         this.f = f;
     }

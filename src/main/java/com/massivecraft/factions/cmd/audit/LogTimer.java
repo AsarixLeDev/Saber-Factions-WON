@@ -16,8 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LogTimer extends ConcurrentHashMap<LogTimer.TimerType, Map<LogTimer.TimerSubType, LogTimer.Timer>> {
-    private final String factionId;
-    private final String username;
+    private String factionId;
+    private String username;
 
     public LogTimer(String username, String factionId) {
         this.username = username;

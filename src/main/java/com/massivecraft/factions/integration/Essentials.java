@@ -4,6 +4,7 @@ import com.earth2me.essentials.IEssentials;
 import com.earth2me.essentials.Teleport;
 import com.earth2me.essentials.Trade;
 import com.massivecraft.factions.Conf;
+import com.massivecraft.factions.iface.EconomyParticipator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -12,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 
 import javax.annotation.Nullable;
 
-public class Essentials {
+public class  Essentials {
 
     private static IEssentials essentials;
 

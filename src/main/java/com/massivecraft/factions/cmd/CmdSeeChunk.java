@@ -22,19 +22,22 @@ import java.util.Map;
 
 public class CmdSeeChunk extends FCommand {
 
-    private static final int[][] OFFSETS = new int[][]{{0, 0}, {15, 0}, {0, 15}, {15, 15}};
     //Used a hashmap cuz imma make a particle selection gui later, will store it where the boolean is rn.
     public static HashMap<String, Boolean> seeChunkMap = new HashMap<>();
-    private final ParticleEffect effect = ParticleEffect.REDSTONE;
     Long interval;
-    private final boolean useParticles;
+    private boolean useParticles;
+    private final ParticleEffect effect = ParticleEffect.REDSTONE;
+
+    private int taskID = -1;
 
 
     //I remade it cause of people getting mad that I had the same seechunk as drtshock
-    private int taskID = -1;
-    private final Material air;
-    private final Material redstoneLamp;
-    private final Material blackStainedGlass;
+
+    private Material air;
+    private Material redstoneLamp;
+    private Material blackStainedGlass;
+
+    private static final int[][] OFFSETS = new int[][] {{0, 0}, {15, 0}, {0, 15}, {15, 15}};
 
 
     public CmdSeeChunk() {

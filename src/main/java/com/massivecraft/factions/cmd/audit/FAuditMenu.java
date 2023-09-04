@@ -22,8 +22,8 @@ import java.util.List;
 
 public class FAuditMenu extends GUIMenu {
     private final Player player;
-    private final Faction faction;
     private boolean showTimestamps = true;
+    private final Faction faction;
 
     public FAuditMenu(Player player, Faction faction) {
         super("Faction Logs", 18);

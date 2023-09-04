@@ -14,8 +14,9 @@ public enum MissionType {
     TRIBUTE;
 
 
-    public static MissionType fromName(String name) {
-        if (name == null || name.isEmpty())
+
+    public static MissionType fromName(String name){
+        if(name == null || name.isEmpty())
             return NONE;
 
         return MissionType.valueOf(name.toUpperCase());

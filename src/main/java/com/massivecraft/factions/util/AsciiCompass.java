@@ -9,8 +9,61 @@ import java.util.*;
 
 public class AsciiCompass {
 
+    public enum Point {
+
+        N('N'),
+        NE('/'),
+        E('E'),
+        SE('\\'),
+        S('S'),
+        SW('/'),
+        W('W'),
+        NW('\\');
+
+        private final char asciiChar;
+
+        public static final Point[] VALUES = values();
+
+        Point(char asciiChar) {
+            this.asciiChar = asciiChar;
+        }
+
+        public Point getOppositePoint() {
+            return VALUES[(ordinal() + 4) % 8];
+        }
+
+        @Override
+        public String toString() {
+            return Character.toString(this.asciiChar);
+        }
+
+        public String getTranslation() {
+            switch(this) {
+                case N:
+                    return TL.COMPASS_SHORT_NORTH.toString();
+                case E:
+                    return TL.COMPASS_SHORT_EAST.toString();
+                case S:
+                    return TL.COMPASS_SHORT_SOUTH.toString();
+                case W:
+                    return TL.COMPASS_SHORT_WEST.toString();
+                default:
+                    return toString();
+            }
+        }
+
+        public String toString(boolean isActive, ChatColor ACTIVE_COLOR, String colorDefault) {
+            return (isActive ? ACTIVE_COLOR : colorDefault) + getTranslation();
+        }
+
+        public static Point fromAngle(float degrees) {
+            return VALUES[FastMath.round(degrees / 45f + 4.5f) & 7];
+        }
+    }
+
     private static final ChatColor ACTIVE_COLOR = ChatColor.DARK_GREEN;
     private static final String DEFAULT_COLOR = TextUtil.parse("<gray>");
+
     private static final Map<Point, List<Component>> COMPASSES = new EnumMap<>(Point.class);
 
     static {
@@ -46,56 +99,5 @@ public class AsciiCompass {
 
     public static List<Component> getAsciiCompass(float degrees) {
         return get(Point.fromAngle(degrees));
-    }
-
-    public enum Point {
-
-        N('N'),
-        NE('/'),
-        E('E'),
-        SE('\\'),
-        S('S'),
-        SW('/'),
-        W('W'),
-        NW('\\');
-
-        public static final Point[] VALUES = values();
-        private final char asciiChar;
-
-        Point(char asciiChar) {
-            this.asciiChar = asciiChar;
-        }
-
-        public static Point fromAngle(float degrees) {
-            return VALUES[FastMath.round(degrees / 45f + 4.5f) & 7];
-        }
-
-        public Point getOppositePoint() {
-            return VALUES[(ordinal() + 4) % 8];
-        }
-
-        @Override
-        public String toString() {
-            return Character.toString(this.asciiChar);
-        }
-
-        public String getTranslation() {
-            switch (this) {
-                case N:
-                    return TL.COMPASS_SHORT_NORTH.toString();
-                case E:
-                    return TL.COMPASS_SHORT_EAST.toString();
-                case S:
-                    return TL.COMPASS_SHORT_SOUTH.toString();
-                case W:
-                    return TL.COMPASS_SHORT_WEST.toString();
-                default:
-                    return toString();
-            }
-        }
-
-        public String toString(boolean isActive, ChatColor ACTIVE_COLOR, String colorDefault) {
-            return (isActive ? ACTIVE_COLOR : colorDefault) + getTranslation();
-        }
     }
 }

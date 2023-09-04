@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Saser
  */
 public class ListParameterizedType implements ParameterizedType {
-    private final Type type;
+    private Type type;
 
     public ListParameterizedType(Type type) {
         this.type = type;

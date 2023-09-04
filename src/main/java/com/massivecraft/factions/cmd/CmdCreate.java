@@ -70,7 +70,7 @@ public class CmdCreate extends FCommand {
         }
 
         //Check for total factions on the server.
-        if (Factions.getInstance().getAllNormalFactions().size() >= Conf.totalAllowedFactionsOnServer && Conf.totalAllowedFactionsOnServer > 0 && !context.fPlayer.isAdminBypassing()) {
+        if(Factions.getInstance().getAllNormalFactions().size() >= Conf.totalAllowedFactionsOnServer && Conf.totalAllowedFactionsOnServer > 0 && !context.fPlayer.isAdminBypassing()) {
             context.msg(TL.COMMAND_CREATE_OVER_LIMIT);
             return;
         }
@@ -123,7 +123,7 @@ public class CmdCreate extends FCommand {
             Logger.print(context.fPlayer.getName() + TL.COMMAND_CREATE_CREATEDLOG + tag, Logger.PrefixType.DEFAULT);
         if (FactionsPlugin.getInstance().getConfig().getBoolean("fpaypal.Enabled"))
             context.msg(TL.COMMAND_PAYPALSET_CREATED);
-        if (Conf.allFactionsPeaceful) {
+        if(Conf.allFactionsPeaceful) {
             faction.setPeaceful(true);
             faction.setPeacefulExplosionsEnabled(false);
         }

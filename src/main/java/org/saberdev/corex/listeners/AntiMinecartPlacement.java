@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 public class AntiMinecartPlacement implements Listener {
 
 
+
     @EventHandler
     public void onBoatPlace(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {

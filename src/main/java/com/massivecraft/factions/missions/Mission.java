@@ -2,14 +2,14 @@ package com.massivecraft.factions.missions;
 
 public class Mission {
 
-    private final String name;
-    private final MissionType type;
-    private final long startTime;
     /**
      * @author Driftay
      */
 
     private long progress;
+    private final String name;
+    private final MissionType type;
+    private final long startTime;
 
     public Mission(String name, MissionType type, long startTime) {
         this.name = name;

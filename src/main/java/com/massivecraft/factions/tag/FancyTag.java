@@ -37,7 +37,7 @@ public enum FancyTag implements Tag {
             }
             String name = p.getNameAndTitle();
             currentOnline.append(Component.text(firstOnline ? name : ", " + name))
-                    .hoverEvent(HoverEvent.showText(Component.text(String.join("\n", tipPlayer(p, gm))))).color(TextUtil.kyoriColor(fme.getColorTo(p)));
+                            .hoverEvent(HoverEvent.showText(Component.text(String.join("\n", tipPlayer(p, gm))))).color(TextUtil.kyoriColor(fme.getColorTo(p)));
             firstOnline = false;
             if (TagUtil.SERIALIZER.toJson(currentOnline.build()).length() > ARBITRARY_LIMIT) {
                 Components.add(currentOnline.build());
@@ -70,7 +70,6 @@ public enum FancyTag implements Tag {
     }),
     ;
 
-    public static final FancyTag[] VALUES = FancyTag.values();
     private final String tag;
     private final QuadFunction<Faction, FPlayer, String, Map<UUID, String>, List<Component>> function;
 
@@ -172,6 +171,8 @@ public enum FancyTag implements Tag {
         }
         return lines;
     }
+
+    public static final FancyTag[] VALUES = FancyTag.values();
 
     @Override
     public String getTag() {

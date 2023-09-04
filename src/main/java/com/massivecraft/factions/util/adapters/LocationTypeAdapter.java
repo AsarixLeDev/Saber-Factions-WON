@@ -20,7 +20,7 @@ public class LocationTypeAdapter implements JsonSerializer<Location>, JsonDeseri
             return object;
         } catch (Exception ex) {
             ex.printStackTrace();
-            Logger.print("Error encountered while serializing a Location.", Logger.PrefixType.WARNING);
+            Logger.print( "Error encountered while serializing a Location.", Logger.PrefixType.WARNING);
             return object;
         }
     }
@@ -37,7 +37,7 @@ public class LocationTypeAdapter implements JsonSerializer<Location>, JsonDeseri
                     object.get("z").getAsDouble());
         } catch (Exception ex) {
             ex.printStackTrace();
-            Logger.print("Error encountered while deserializing a Location.", Logger.PrefixType.WARNING);
+            Logger.print( "Error encountered while deserializing a Location.", Logger.PrefixType.WARNING);
             return null;
         }
 

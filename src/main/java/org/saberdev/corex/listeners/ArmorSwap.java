@@ -26,35 +26,35 @@ public class ArmorSwap implements Listener {
     }
 
     public void equipArmor(Player player, ItemStack item) {
-        if (item == null || item.getType() == Material.AIR) return;
+        if(item == null || item.getType() == Material.AIR) return;
         String name = item.getType().toString().toLowerCase();
         PlayerInventory inv = player.getInventory();
-        if (name.contains("helmet")) {
+        if(name.contains("helmet")) {
             ItemStack old = inv.getHelmet();
             inv.setHelmet(item);
             inv.remove(item);
-            if (old != null && old.getType() != Material.AIR) {
+            if(old != null && old.getType() != Material.AIR) {
                 inv.setItemInHand(old);
             }
-        } else if (name.contains("chestplate")) {
+        } else if(name.contains("chestplate")) {
             ItemStack old = inv.getChestplate();
             inv.setChestplate(item);
             inv.remove(item);
-            if (old != null && old.getType() != Material.AIR) {
+            if(old != null && old.getType() != Material.AIR) {
                 inv.setItemInHand(old);
             }
-        } else if (name.contains("leggings")) {
+        } else if(name.contains("leggings")) {
             ItemStack old = inv.getLeggings();
             inv.setLeggings(item);
             inv.remove(item);
-            if (old != null && old.getType() != Material.AIR) {
+            if(old != null && old.getType() != Material.AIR) {
                 inv.setItemInHand(old);
             }
-        } else if (name.contains("boots")) {
+        } else if(name.contains("boots")) {
             ItemStack old = inv.getBoots();
             inv.setBoots(item);
             inv.remove(item);
-            if (old != null && old.getType() != Material.AIR) {
+            if(old != null && old.getType() != Material.AIR) {
                 inv.setItemInHand(old);
             }
         }

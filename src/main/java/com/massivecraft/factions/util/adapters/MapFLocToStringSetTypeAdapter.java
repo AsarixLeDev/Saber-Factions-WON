@@ -49,7 +49,7 @@ public class MapFLocToStringSetTypeAdapter implements JsonDeserializer<Map<FLoca
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Logger.print("Error encountered while deserializing a Map of FLocations to String Sets.", Logger.PrefixType.WARNING);
+            Logger.print( "Error encountered while deserializing a Map of FLocations to String Sets.", Logger.PrefixType.WARNING);
             return null;
         }
     }
@@ -94,7 +94,7 @@ public class MapFLocToStringSetTypeAdapter implements JsonDeserializer<Map<FLoca
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Logger.print("Error encountered while serializing a Map of FLocations to String Sets.", Logger.PrefixType.WARNING);
+            Logger.print( "Error encountered while serializing a Map of FLocations to String Sets.", Logger.PrefixType.WARNING);
             return obj;
         }
     }

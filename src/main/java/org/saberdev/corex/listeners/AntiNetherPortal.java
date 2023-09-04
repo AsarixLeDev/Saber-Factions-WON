@@ -8,8 +8,8 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 public class AntiNetherPortal implements Listener {
 
     @EventHandler
-    public void onTeleportNether(PlayerPortalEvent e) {
-        if (e.getCause() == PlayerTeleportEvent.TeleportCause.NETHER_PORTAL && !e.getPlayer().isOp()) {
+    public void onTeleportNether(PlayerPortalEvent e){
+        if(e.getCause() == PlayerTeleportEvent.TeleportCause.NETHER_PORTAL && !e.getPlayer().isOp()) {
             e.setCancelled(true);
         }
     }

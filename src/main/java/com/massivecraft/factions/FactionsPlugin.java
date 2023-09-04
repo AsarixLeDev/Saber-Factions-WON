@@ -65,12 +65,7 @@ public class FactionsPlugin extends MPlugin {
     // Our single plugin instance.
     // Single 4 life.
     public static FactionsPlugin instance;
-    public static boolean cachedRadiusClaim;
-    public static Permission perms = null;
-    // This plugin sets the boolean true when fully enabled.
-    // Plugins can check this boolean while hooking in have
-    // a green light to use the api.
-    public static boolean startupFinished = false;
+
     private final Gson gsonSerializer = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().enableComplexMapKeySerialization().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.VOLATILE)
             .registerTypeAdapter(new TypeToken<Map<Permissable, Map<PermissableAction, Access>>>() {
             }.getType(), new PermissionsMapTypeAdapter())
@@ -82,10 +77,21 @@ public class FactionsPlugin extends MPlugin {
             .registerTypeAdapter(Location.class, new LocationTypeAdapter())
             .registerTypeAdapterFactory(EnumTypeAdapter.ENUM_FACTORY)
             .create();
+    public static boolean cachedRadiusClaim;
+    public static Permission perms = null;
+    private Map<String, FactionsAddon> factionsAddonHashMap;
+    private HashMap<Faction, String> shieldStatMap = new HashMap<>();
+
+    // This plugin sets the boolean true when fully enabled.
+    // Plugins can check this boolean while hooking in have
+    // a green light to use the api.
+    public static boolean startupFinished = false;
     public boolean PlaceholderApi;
+    // Commands
+
     public FCmdRoot cmdBase;
     public CmdAutoHelp cmdAutoHelp;
-    // Commands
+    private AsyncPlayerMap asyncPlayerMap;
     public short version;
     public boolean useNonPacketParticles = false;
     public List<String> itemList = getConfig().getStringList("fchest.Items-Not-Allowed");
@@ -94,16 +100,13 @@ public class FactionsPlugin extends MPlugin {
     public List<ReserveObject> reserveObjects;
     public FileManager fileManager;
     public TimerManager timerManager;
-    public LunarClientWrapper lcWrapper;
-    private Map<String, FactionsAddon> factionsAddonHashMap;
-    private final HashMap<Faction, String> shieldStatMap = new HashMap<>();
-    private AsyncPlayerMap asyncPlayerMap;
     private FactionsPlayerListener factionsPlayerListener;
     private boolean locked = false;
     private Integer AutoLeaveTask = null;
     private ClipPlaceholderAPIManager clipPlaceholderAPIManager;
     private boolean mvdwPlaceholderAPIManager = false;
     private BannerManager bannerManager;
+    public LunarClientWrapper lcWrapper;
 
     public FactionsPlugin() {
         instance = this;
@@ -215,7 +218,7 @@ public class FactionsPlugin extends MPlugin {
 
             Bukkit.getScheduler().runTaskLater(this, () -> {
                 //To Add Addon Commands Into "Tab Completion Format"
-                if (factionsAddonHashMap.size() > 0) {
+                if(factionsAddonHashMap.size() > 0) {
                     FCmdRoot.instance.addVariableCommands();
                     FCmdRoot.instance.rebuild();
                 }
@@ -304,7 +307,7 @@ public class FactionsPlugin extends MPlugin {
             TextUtil.AUDIENCES.close();
         }
 
-        if (bannerManager != null) {
+        if(bannerManager != null) {
             bannerManager.onDisable(this);
         }
 

@@ -25,6 +25,7 @@ public class PermissableRelationFrame extends SaberGUI {
      */
 
 
+
     public PermissableRelationFrame(Player player, Faction faction) {
         super(player, CC.translate(Objects.requireNonNull(FactionsPlugin.getInstance().getFileManager().getFperms().getConfig().getString("fperm-gui.relation.name")).replace("{faction}", faction.getTag())), FactionsPlugin.getInstance().getFileManager().getFperms().getConfig().getInt("fperm-gui.relation.rows") * 9);
     }

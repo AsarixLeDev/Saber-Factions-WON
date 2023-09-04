@@ -29,10 +29,11 @@ public enum Role implements Permissable {
     NORMAL(1, TL.ROLE_NORMAL),
     RECRUIT(0, TL.ROLE_RECRUIT);
 
-    public static Role[] VALUES = values();
     public final int value;
     public final String nicename;
     public final TL translation;
+
+    public static Role[] VALUES = values();
 
 
     Role(final int value, final TL translation) {

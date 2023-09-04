@@ -20,9 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FLogManager {
     private Map<String, FactionLogs> factionLogMap = new ConcurrentHashMap<>();
     private File logFile;
-    private final Type logToken = (new TypeToken<ConcurrentHashMap<String, FactionLogs>>() {
+    private Type logToken = (new TypeToken<ConcurrentHashMap<String, FactionLogs>>() {
     }).getType();
-    private final Map<UUID, LogTimer> logTimers = new ConcurrentHashMap<>();
+    private Map<UUID, LogTimer> logTimers = new ConcurrentHashMap<>();
     private boolean saving = false;
 
     public FLogManager() {

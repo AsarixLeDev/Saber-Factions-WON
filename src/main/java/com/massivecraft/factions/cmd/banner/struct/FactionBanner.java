@@ -80,7 +80,7 @@ public class FactionBanner {
 
     public int getSecondsLeft() {
         long time = System.currentTimeMillis() - this.placeTime;
-        return (int) Math.ceil(((expired - time) / 1000L));
+        return (int)Math.ceil(((expired - time) / 1000L));
     }
 
     public void placeBanner(Faction faction, Player whoPlaced, Location location) {

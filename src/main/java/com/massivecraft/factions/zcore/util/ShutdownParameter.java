@@ -14,10 +14,10 @@ import java.nio.file.Paths;
 public class ShutdownParameter {
 
     public static void initShutdown(FactionsPlugin plugin) {
-        Logger.print("===== Shutdown Start =====", Logger.PrefixType.DEFAULT);
+        Logger.print( "===== Shutdown Start =====", Logger.PrefixType.DEFAULT);
         Conf.saveSync();
         FactionsPlugin.getInstance().getTimerManager().saveTimerData();
-        for (FactionsAddon factionsAddon : FactionsPlugin.getInstance().getFactionsAddonHashMap().values()) {
+        for(FactionsAddon factionsAddon : FactionsPlugin.getInstance().getFactionsAddonHashMap().values()) {
             factionsAddon.disableAddon();
             Logger.print("Disabled " + factionsAddon.getAddonName() + " addon", Logger.PrefixType.DEFAULT);
         }

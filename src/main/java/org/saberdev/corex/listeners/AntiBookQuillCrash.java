@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class AntiBookQuillCrash implements Listener {
 
-    private static final Material WRITTABLE_BOOK = XMaterial.WRITABLE_BOOK.parseMaterial();
+    private static Material WRITTABLE_BOOK = XMaterial.WRITABLE_BOOK.parseMaterial();
 
     @EventHandler
     public void onAttemptCrash(PlayerInteractEvent event) {

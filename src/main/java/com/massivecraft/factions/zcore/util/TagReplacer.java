@@ -94,9 +94,10 @@ public enum TagReplacer {
     FACTIONLESS(TagType.GENERAL, "{factionless}"),
     TOTAL_ONLINE(TagType.GENERAL, "{total-online}");
 
+    private TagType type;
+    private String tag;
+
     public static final TagReplacer[] VALUES = values();
-    private final TagType type;
-    private final String tag;
 
     TagReplacer(TagType type, String tag) {
         this.type = type;

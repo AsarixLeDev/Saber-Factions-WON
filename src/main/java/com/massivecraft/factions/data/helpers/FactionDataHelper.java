@@ -24,10 +24,6 @@ public class FactionDataHelper {
 
     private static List<FactionData> data;
 
-    public FactionDataHelper(FactionData data) {
-        FactionDataHelper.data.add(data);
-    }
-
     public static void init() {
         FactionsPlugin.getInstance().getServer().getPluginManager().registerEvents(new FactionDataListener(), FactionsPlugin.getInstance());
         new FactionDataDeploymentTask().runTaskTimerAsynchronously(FactionsPlugin.getInstance(), 20, 20);
@@ -44,6 +40,11 @@ public class FactionDataHelper {
             data.removeSafely();
         }
     }
+
+    public FactionDataHelper(FactionData data) {
+        FactionDataHelper.data.add(data);
+    }
+
 
     public static void createConfiguration(Faction faction) {
         File file = new File(FactionsPlugin.getInstance().getDataFolder() + "/faction-data/"

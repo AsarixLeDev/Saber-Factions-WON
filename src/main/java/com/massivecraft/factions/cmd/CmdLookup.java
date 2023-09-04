@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class CmdLookup extends FCommand {
 
-    private final DecimalFormat format = new DecimalFormat("#.#");
+    private DecimalFormat format = new DecimalFormat("#.#");
 
     public CmdLookup() {
         super();

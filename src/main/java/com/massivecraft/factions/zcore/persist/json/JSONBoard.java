@@ -18,7 +18,7 @@ import java.util.TreeMap;
 
 
 public class JSONBoard extends MemoryBoard {
-    private static final Path file = FactionsPlugin.getInstance().getDataFolder().toPath().resolve("board.json");
+    private static transient Path file = FactionsPlugin.getInstance().getDataFolder().toPath().resolve("board.json");
 
     // -------------------------------------------- //
     // Persistance

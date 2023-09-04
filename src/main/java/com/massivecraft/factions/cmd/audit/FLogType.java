@@ -24,8 +24,8 @@ public enum FLogType {
     RANK_EDIT("&e%s&7 set &e%s&7 to %s", 3),
     F_TNT("&e%s&7 %s &e%s", 3);
 
-    private final String msg;
-    private final int requiredArgs;
+    private String msg;
+    private int requiredArgs;
 
     FLogType(String msg, int requiredArgs) {
         this.msg = msg;

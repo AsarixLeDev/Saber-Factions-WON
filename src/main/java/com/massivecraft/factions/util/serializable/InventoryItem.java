@@ -12,8 +12,8 @@ import java.util.Map;
  * @author Driftay
  */
 public class InventoryItem {
-    private final ItemStack item;
-    private final Map<ClickType, Runnable> clickMap;
+    private ItemStack item;
+    private Map<ClickType, Runnable> clickMap;
     private Runnable runnable;
 
     public InventoryItem(ItemStack original) {

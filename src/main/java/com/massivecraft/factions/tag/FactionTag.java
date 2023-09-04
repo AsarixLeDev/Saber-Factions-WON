@@ -1,15 +1,14 @@
 package com.massivecraft.factions.tag;
 
-import com.massivecraft.factions.Conf;
-import com.massivecraft.factions.FPlayer;
-import com.massivecraft.factions.Faction;
-import com.massivecraft.factions.FactionsPlugin;
+import com.massivecraft.factions.*;
 import com.massivecraft.factions.integration.Econ;
 import com.massivecraft.factions.struct.Relation;
+import com.massivecraft.factions.util.CC;
 import com.massivecraft.factions.util.FastMath;
 import com.massivecraft.factions.zcore.util.TL;
 import com.massivecraft.factions.zcore.util.TextUtil;
 
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -108,7 +107,6 @@ public enum FactionTag implements Tag {
     FACTION_BANCOUNT("{faction-bancount}", (fac) -> String.valueOf(fac.getBannedPlayers().size())),
     ;
 
-    public static final FactionTag[] VALUES = FactionTag.values();
     private final String tag;
     private final BiFunction<Faction, FPlayer, String> biFunction;
     private final Function<Faction, String> function;
@@ -138,6 +136,9 @@ public enum FactionTag implements Tag {
         }
         return text;
     }
+
+    public static final FactionTag[] VALUES = FactionTag.values();
+
 
     @Override
     public String getTag() {

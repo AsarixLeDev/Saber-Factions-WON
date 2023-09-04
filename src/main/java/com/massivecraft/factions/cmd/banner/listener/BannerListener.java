@@ -26,11 +26,12 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 public class BannerListener implements Listener {
-    private final List<String> bannerAllowedWorlds = FactionsPlugin.getInstance().getFileManager().getBanners().fetchStringList("Banners.allowedWorldNames");
+    private List<String> bannerAllowedWorlds = FactionsPlugin.getInstance().getFileManager().getBanners().fetchStringList("Banners.allowedWorldNames");
 
     public List<String> getBannerAllowedWorlds() {
         return this.bannerAllowedWorlds;
     }
+
 
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = false)
@@ -107,7 +108,7 @@ public class BannerListener implements Listener {
 
                 Location placedLoc = e.getBlockPlaced().getLocation();
                 FLocation fplacedLoc = FLocation.wrap(placedLoc);
-                if (Board.getInstance().getFactionAt(fplacedLoc).isWarZone() && FactionsPlugin.getInstance().getFileManager().getBanners().fetchBoolean("Banners.placeable-warzone") || fPlayer.getFaction().getRelationTo(Board.getInstance().getFactionAt(fplacedLoc)) == Relation.ENEMY && FactionsPlugin.getInstance().getFileManager().getBanners().fetchBoolean("Banners.placeable-enemy")) {
+                if (Board.getInstance().getFactionAt(fplacedLoc).isWarZone() && FactionsPlugin.getInstance().getFileManager().getBanners().fetchBoolean("Banners.placeable-warzone") || fPlayer.getFaction().getRelationTo(Board.getInstance().getFactionAt(fplacedLoc)) == Relation.ENEMY &&FactionsPlugin.getInstance().getFileManager().getBanners().fetchBoolean("Banners.placeable-enemy")) {
 
                     Location playerLoc = e.getPlayer().getLocation();
                     if (playerLoc.getBlockX() != placedOn.getX() || playerLoc.getBlockZ() != placedOn.getZ() ||

@@ -55,7 +55,7 @@ public class JSONFactions extends MemoryFactions {
 
     public void load(Consumer<Boolean> success) {
         this.loadCore(data -> super.load(aBoolean -> {
-            if (data == null) {
+            if (data == null){
                 Logger.print("No player factions loaded. Fresh start?", Logger.PrefixType.DEFAULT);
                 success.accept(true);
                 return;
@@ -77,8 +77,7 @@ public class JSONFactions extends MemoryFactions {
             return;
         }
 
-        Map<String, JSONFaction> data = FactionsPlugin.getInstance().getGson().fromJson(content, new TypeToken<Map<String, JSONFaction>>() {
-        }.getType());
+        Map<String, JSONFaction> data = FactionsPlugin.getInstance().getGson().fromJson(content, new TypeToken<Map<String, JSONFaction>>(){}.getType());
         if (data == null) {
             finish.accept(null);
             return;
@@ -179,9 +178,9 @@ public class JSONFactions extends MemoryFactions {
         Set<String> list = new HashSet<>(keys.size());
         for (String value : keys) {
             if (!JSONFPlayers.PATTERN_UUID.matcher(value).matches()) {
-                if (JSONFPlayers.PATTERN_USERNAME.matcher(value).matches()) {
-                    list.add(value);
-                }
+               if (JSONFPlayers.PATTERN_USERNAME.matcher(value).matches()) {
+                   list.add(value);
+               }
             }
         }
         return list;
@@ -214,8 +213,7 @@ public class JSONFactions extends MemoryFactions {
         try {
             int idAsInt = Integer.parseInt(id);
             this.updateNextIdForId(idAsInt);
-        } catch (NumberFormatException ignored) {
-        }
+        } catch (NumberFormatException ignored) {}
     }
 
     @Override

@@ -31,8 +31,8 @@ public class CmdMissions extends FCommand {
     public void perform(CommandContext context) {
         String tributeString = context.argAsString(0);
 
-        if (tributeString != null) {
-            if (tributeString.startsWith("t")) {
+        if(tributeString != null){
+            if(tributeString.startsWith("t")){
                 context.player.openInventory(TributeInventoryHandler.getInventory());
             }
             return;

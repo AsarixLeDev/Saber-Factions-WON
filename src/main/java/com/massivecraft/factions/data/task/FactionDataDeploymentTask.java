@@ -18,9 +18,9 @@ public class FactionDataDeploymentTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        for (Faction faction : Factions.getInstance().getAllFactions()) {
-            if (cachedList.contains(faction)) continue;
-            if (faction.isSystemFaction()) continue;
+        for(Faction faction : Factions.getInstance().getAllFactions()) {
+            if(cachedList.contains(faction)) continue;
+            if(faction.isSystemFaction()) continue;
             final FactionData data = new FactionData(faction);
             new FactionDataHelper(data);
             cachedList.add(faction);

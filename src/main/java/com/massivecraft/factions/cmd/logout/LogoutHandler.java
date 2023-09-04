@@ -14,8 +14,8 @@ import java.util.UUID;
 public class LogoutHandler {
 
     public static Map<String, LogoutHandler> factionDatas = new HashMap<>();
-    private final Map<UUID, Long> logoutCooldown = new HashMap<>();
-    private final String name;
+    private Map<UUID, Long> logoutCooldown = new HashMap<>();
+    private String name;
 
     public LogoutHandler(String name) {
         this.name = name;

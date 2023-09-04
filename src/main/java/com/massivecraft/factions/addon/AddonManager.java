@@ -3,6 +3,7 @@ package com.massivecraft.factions.addon;
 import com.massivecraft.factions.FactionsPlugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;

@@ -43,7 +43,7 @@ public abstract class SpiralTask implements Runnable {
 
         this.world = Bukkit.getWorld(fLocation.getWorldName());
         if (this.world == null) {
-            Logger.print("[SpiralTask] A valid world must be specified!", Logger.PrefixType.WARNING);
+            Logger.print( "[SpiralTask] A valid world must be specified!", Logger.PrefixType.WARNING);
             this.stop();
             return;
         }
@@ -98,14 +98,12 @@ public abstract class SpiralTask implements Runnable {
     public final int getZ() {
         return z;
     }
-
     public final void setTaskID(int ID) {
         if (ID == -1) {
             this.stop();
         }
         taskID = ID;
     }
-
     public final void run() {
         if (!this.valid() || !readyToGo) {
             return;
@@ -173,7 +171,6 @@ public abstract class SpiralTask implements Runnable {
 
         return true;
     }
-
     public final boolean insideRadius() {
         boolean inside = current < limit;
         if (!inside) {
