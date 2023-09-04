@@ -104,7 +104,7 @@ public class CmdPerm extends FCommand {
             }
         }
 
-        if(success) {
+        if (success) {
             context.msg(TL.COMMAND_PERM_SET, context.argAsString(1), access.name(), context.argAsString(0));
             Logger.print(String.format(TL.COMMAND_PERM_SET.toString(), context.argAsString(1), access.name(), context.argAsString(0)) + " for faction " + context.fPlayer.getTag(), Logger.PrefixType.DEFAULT);
         }

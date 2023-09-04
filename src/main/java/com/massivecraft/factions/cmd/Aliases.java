@@ -167,7 +167,7 @@ public class Aliases {
     public static ArrayList<String> upgrades = new ArrayList<>(Arrays.asList("upgrades", "upgrade"));
     public static ArrayList<String> vault = new ArrayList<>(Collections.singletonList("vault"));
     public static ArrayList<String> viewChest = new ArrayList<>(Arrays.asList("viewchest", "viewpv"));
-    private static transient Aliases i = new Aliases();
+    private static final Aliases i = new Aliases();
 
     public static void load() {
         FactionsPlugin.getInstance().persist.loadOrSaveDefault(i, Aliases.class, "aliases");

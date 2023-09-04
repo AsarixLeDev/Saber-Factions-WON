@@ -25,12 +25,6 @@ public final class FLocation implements Serializable {
     private static final long serialVersionUID = -8292915234027387983L;
     private static boolean WORLD_BORDER_SUPPORT;
 
-    private final String world;
-    private final int x;
-    private final int z;
-
-    private String formatted = null;
-
     static {
         try {
             Class.forName("org.bukkit.WorldBorder");
@@ -40,10 +34,42 @@ public final class FLocation implements Serializable {
         }
     }
 
+    private final String world;
+    private final int x;
+    private final int z;
+    private String formatted = null;
+
     public FLocation() {
         this.world = "";
         this.x = 0;
         this.z = 0;
+    }
+
+    @Deprecated
+    public FLocation(String world, int x, int z) {
+        this.world = world;
+        this.x = x;
+        this.z = z;
+    }
+
+    @Deprecated
+    public FLocation(Location location) {
+        this(location.getWorld().getName(), WorldUtil.blockToChunk(location.getBlockX()), WorldUtil.blockToChunk(location.getBlockZ()));
+    }
+
+    @Deprecated
+    public FLocation(Player player) {
+        this(player.getLocation());
+    }
+
+    @Deprecated
+    public FLocation(FPlayer fplayer) {
+        this(fplayer.getPlayer());
+    }
+
+    @Deprecated
+    public FLocation(Block block) {
+        this(block.getLocation());
     }
 
     public static FLocation empty() {
@@ -90,31 +116,26 @@ public final class FLocation implements Serializable {
         return wrap(fPlayer.getPlayer());
     }
 
-    @Deprecated
-    public FLocation(String world, int x, int z) {
-        this.world = world;
-        this.x = x;
-        this.z = z;
-    }
+    public static boolean isOutsideWorldBorder(World world, int x, int z, int buffer) {
+        if (!WORLD_BORDER_SUPPORT || world.getWorldBorder().getSize() == 0) {
+            return false;
+        }
 
-    @Deprecated
-    public FLocation(Location location) {
-        this(location.getWorld().getName(), WorldUtil.blockToChunk(location.getBlockX()), WorldUtil.blockToChunk(location.getBlockZ()));
-    }
+        WorldBorder border = world.getWorldBorder();
+        Location center = border.getCenter();
+        double size = border.getSize() / 2.0D;
+        int bufferBlocks = buffer << 4;
+        double borderMinX = center.getX() - size + bufferBlocks;
+        double borderMinZ = center.getZ() - size + bufferBlocks;
+        double borderMaxX = center.getX() + size - bufferBlocks;
+        double borderMaxZ = center.getZ() + size - bufferBlocks;
 
-    @Deprecated
-    public FLocation(Player player) {
-        this(player.getLocation());
-    }
+        int chunkMinX = WorldUtil.chunkToBlock(x);
+        int chunkMinZ = WorldUtil.chunkToBlock(z);
+        int chunkMaxX = chunkMinX | 15;
+        int chunkMaxZ = chunkMinZ | 15;
 
-    @Deprecated
-    public FLocation(FPlayer fplayer) {
-        this(fplayer.getPlayer());
-    }
-
-    @Deprecated
-    public FLocation(Block block) {
-        this(block.getLocation());
+        return chunkMinX >= borderMaxX || chunkMinZ >= borderMaxZ || chunkMaxX <= borderMinX || chunkMaxZ <= borderMinZ;
     }
 
     public World getWorld() {
@@ -191,29 +212,6 @@ public final class FLocation implements Serializable {
 
     public boolean isInChunk(Location loc) {
         return loc != null && (loc.getWorld().getName().equals(getWorldName()) && WorldUtil.blockToChunk(loc.getBlockX()) == this.x && WorldUtil.blockToChunk(loc.getBlockZ()) == this.z);
-    }
-
-
-    public static boolean isOutsideWorldBorder(World world, int x, int z, int buffer) {
-        if (!WORLD_BORDER_SUPPORT || world.getWorldBorder().getSize() == 0) {
-            return false;
-        }
-
-        WorldBorder border = world.getWorldBorder();
-        Location center = border.getCenter();
-        double size = border.getSize() / 2.0D;
-        int bufferBlocks = buffer << 4;
-        double borderMinX = center.getX() - size + bufferBlocks;
-        double borderMinZ = center.getZ() - size + bufferBlocks;
-        double borderMaxX = center.getX() + size - bufferBlocks;
-        double borderMaxZ = center.getZ() + size - bufferBlocks;
-
-        int chunkMinX = WorldUtil.chunkToBlock(x);
-        int chunkMinZ = WorldUtil.chunkToBlock(z);
-        int chunkMaxX = chunkMinX | 15;
-        int chunkMaxZ = chunkMinZ | 15;
-
-        return chunkMinX >= borderMaxX || chunkMinZ >= borderMaxZ || chunkMaxX <= borderMinX || chunkMaxZ <= borderMinZ;
     }
 
     public boolean isOutsideWorldBorder(World world, int buffer) {

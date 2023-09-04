@@ -72,9 +72,11 @@ public class EngineDynmap {
         }
         return ret.toString();
     }
+
     public static String getHtmlPlayerName(FPlayer fplayer) {
         return fplayer != null ? escapeHtml(fplayer.getName()) : "none";
     }
+
     public static String getHtmlPlayerUUID(FPlayer fplayer) {
         return fplayer != null ? escapeHtml(fplayer.getAccountId()) : "none";
     }

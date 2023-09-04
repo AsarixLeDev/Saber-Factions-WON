@@ -1436,12 +1436,11 @@ public enum TL {
 
     PLACEHOLDERAPI_NULL("");
 
+    public static final TL[] VALUES = values();
     public static SimpleDateFormat sdf;
     private static YamlConfiguration LANG;
     private String path;
-    private String def;
-
-    public static final TL[] VALUES = values();
+    private final String def;
 
     /**
      * Lang enum constructor.

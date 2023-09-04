@@ -19,7 +19,7 @@ public class CmdList extends FCommand {
      * @author FactionsUUID Team - Modified By CmdrKittens
      */
 
-    private String[] defaults = new String[3];
+    private final String[] defaults = new String[3];
 
     public CmdList() {
         super();

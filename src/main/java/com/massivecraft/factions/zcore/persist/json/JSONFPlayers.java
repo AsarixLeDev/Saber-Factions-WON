@@ -22,11 +22,10 @@ import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 public class JSONFPlayers extends MemoryFPlayers {
-    // Info on how to persist
-    private Path path;
-
     static final Pattern PATTERN_UUID = Pattern.compile("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}");
     static final Pattern PATTERN_USERNAME = Pattern.compile("[a-zA-Z0-9_]{2,16}");
+    // Info on how to persist
+    private final Path path;
 
     public JSONFPlayers() {
         this.path = FactionsPlugin.getInstance().getDataFolder().toPath().resolve("players.json");
@@ -82,7 +81,8 @@ public class JSONFPlayers extends MemoryFPlayers {
             return;
         }
 
-        Map<String, JSONFPlayer> data = FactionsPlugin.getInstance().getGson().fromJson(content, new TypeToken<Map<String, JSONFPlayer>>(){}.getType());
+        Map<String, JSONFPlayer> data = FactionsPlugin.getInstance().getGson().fromJson(content, new TypeToken<Map<String, JSONFPlayer>>() {
+        }.getType());
         if (data == null) {
             finish.accept(null);
             return;

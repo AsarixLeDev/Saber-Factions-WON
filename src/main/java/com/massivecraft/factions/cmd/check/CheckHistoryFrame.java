@@ -24,10 +24,10 @@ public class CheckHistoryFrame implements FactionGUI {
      * @author Driftay
      */
 
-    private FactionsPlugin plugin;
-    private Faction faction;
-    private Inventory inventory;
-    private SimpleDateFormat simpleDateFormat;
+    private final FactionsPlugin plugin;
+    private final Faction faction;
+    private final Inventory inventory;
+    private final SimpleDateFormat simpleDateFormat;
 
     public CheckHistoryFrame(FactionsPlugin plugin, Faction faction) {
         this.simpleDateFormat = new SimpleDateFormat(Conf.dateFormat);

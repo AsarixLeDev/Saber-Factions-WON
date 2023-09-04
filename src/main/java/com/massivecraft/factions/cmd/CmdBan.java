@@ -69,7 +69,7 @@ public class CmdBan extends FCommand {
 
             if (event.isCancelled()) {
                 // if someone cancels a ban, we'll get people complaining here. So lets log it.
-                Logger.printArgs( "Attempted to ban {0} but someone cancelled the kick event. This isn't good.", Logger.PrefixType.WARNING, target.getName());
+                Logger.printArgs("Attempted to ban {0} but someone cancelled the kick event. This isn't good.", Logger.PrefixType.WARNING, target.getName());
                 return;
             }
 

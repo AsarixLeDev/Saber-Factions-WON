@@ -435,7 +435,7 @@ CLAIM:
   PEACEFUL: '%s<i> possède cette zone. Votre faction est paisible, donc vous ne pouvez pas protéger une zone
     d'autres factions.'
   PEACEFULTARGET: '%s<i> possède cette zone, et c'est une faction paisible. Vous ne pouvez pas protéger
-    une done leur appartenant.'
+                    une done leur appartenant.'
   THISISSPARTA: '%s<i> possède cette zone et est suffisamment forte pour la maintenir.'
   BORDER: <b>Vous devez démarrer la protection de zone à la bordure du territoire.
   TOCLAIM: afin de protéger cette zone

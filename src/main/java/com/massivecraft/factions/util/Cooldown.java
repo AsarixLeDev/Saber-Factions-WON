@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * Creation Date: 4/6/2020
  */
 public class Cooldown {
-    
+
     private static final long MILLIS_IN_SECOND = TimeUnit.SECONDS.toMillis(1);
 
     public static void setCooldown(Player player, String name, int seconds) {

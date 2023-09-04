@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 public final class TextUtil {
 
     public static final ChatColor[] BUKKIT_COLORS = ChatColor.values();
-
+    public static final Pattern PATTERN_TAG = Pattern.compile("<([a-zA-Z0-9_]*)>");
     private static final Map<String, String> TAGS = new HashMap<>();
     private static final Map<String, String> RAW_TAGS = new LinkedHashMap<>();
     private static final Map<ChatColor, Color> CHATCOLOR_TO_COLOR = new EnumMap<ChatColor, Color>(ChatColor.class) {{
@@ -43,7 +43,6 @@ public final class TextUtil {
         put(ChatColor.WHITE, new Color(16777215));
     }};
     private static final Map<ChatColor, TextColor> BUKKIT_TO_KYORI = new EnumMap<>(ChatColor.class);
-
     private static final String[] COLOR_TAGS = new String[]{
             "<empty>",
             "<black>",
@@ -63,7 +62,6 @@ public final class TextUtil {
             "<yellow>",
             "<white>"
     };
-
     private static final String[] COLOR_TAGS_SHORT_HAND = new String[]{
             "`e",
             "`k",
@@ -83,7 +81,6 @@ public final class TextUtil {
             "`y",
             "`w"
     };
-
     private static final String[] BUKKIT_RAW_COLORS = new String[]{
             "",
             "\u00A70",
@@ -103,10 +100,11 @@ public final class TextUtil {
             "\u00A7e",
             "\u00A7f"
     };
-
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
-
-    private static boolean ANSI_SUPPORTED = false;
+    private final static String TITLEIZE_LINE = repeat("_", 52);
+    private final static int TITLEIZE_BALANCE = -1;
+    public static BukkitAudiences AUDIENCES;
+    private static final boolean ANSI_SUPPORTED = false;
 
     static {
         RAW_TAGS.put("l", "<green>"); // logo
@@ -126,10 +124,9 @@ public final class TextUtil {
         }
     }
 
-    public static BukkitAudiences AUDIENCES;
-
     public static void init() {
-        Map<String, String> tagsFromFile = FactionsPlugin.getInstance().persist.load(new TypeToken<Map<String, String>>(){}.getType(), "tags");
+        Map<String, String> tagsFromFile = FactionsPlugin.getInstance().persist.load(new TypeToken<Map<String, String>>() {
+        }.getType(), "tags");
         if (tagsFromFile != null) {
             RAW_TAGS.putAll(tagsFromFile);
         }
@@ -139,10 +136,6 @@ public final class TextUtil {
             TAGS.put(rawTag.getKey(), TextUtil.parseColor(rawTag.getValue()));
         }
         AUDIENCES = BukkitAudiences.create(FactionsPlugin.getInstance());
-    }
-
-    public String put(String key, String value) {
-        return TAGS.put(key, value);
     }
 
     public static String parse(String str) {
@@ -157,7 +150,9 @@ public final class TextUtil {
         return replaceTags(str, TAGS);
     }
 
-    public static final Pattern PATTERN_TAG = Pattern.compile("<([a-zA-Z0-9_]*)>");
+    // -------------------------------------------- //
+    // Fancy parsing
+    // -------------------------------------------- //
 
     public static String replaceTags(String str, Map<String, String> tags) {
         StringBuffer ret = new StringBuffer();
@@ -171,10 +166,6 @@ public final class TextUtil {
         return ret.toString();
     }
 
-    // -------------------------------------------- //
-    // Fancy parsing
-    // -------------------------------------------- //
-
     public static TextComponent.Builder parseFancy(String prefix) {
         return toFancy(parse(prefix));
     }
@@ -187,13 +178,13 @@ public final class TextUtil {
         return LegacyComponentSerializer.legacyAmpersand().deserialize(first).toBuilder();
     }
 
-    public static String formatDecimal(double number) {
-        return DECIMAL_FORMAT.format(number);
-    }
-
     // -------------------------------------------- //
     // Color parsing
     // -------------------------------------------- //
+
+    public static String formatDecimal(double number) {
+        return DECIMAL_FORMAT.format(number);
+    }
 
     public static String parseColorBukkit(String string) {
         return CC.translate(string);
@@ -216,13 +207,13 @@ public final class TextUtil {
         return StringUtils.replaceEach(string, COLOR_TAGS, BUKKIT_RAW_COLORS);
     }
 
-    public static String replace(String string, String search, String replacement) {
-        return FastUUID.JDK_9 ? string.replace(search, replacement) : StringUtils.replace(string, search, replacement);
-    }
-
     // -------------------------------------------- //
     // Standard utils like UCFirst, implode and repeat.
     // -------------------------------------------- //
+
+    public static String replace(String string, String search, String replacement) {
+        return FastUUID.JDK_9 ? string.replace(search, replacement) : StringUtils.replace(string, search, replacement);
+    }
 
     public static String upperCaseFirst(String string) {
         return string.substring(0, 1).toUpperCase() + string.substring(1);
@@ -232,24 +223,21 @@ public final class TextUtil {
         return String.join(glue, list);
     }
 
-    public static String repeat(String s, int times) {
-        return times > 0 ? s + repeat(s, times - 1) : "";
-    }
-
     // -------------------------------------------- //
     // Material name tools
     // -------------------------------------------- //
 
-    public static String getMaterialName(Material material) {
-        return replace(material.toString(), "_", " ").toLowerCase();
+    public static String repeat(String s, int times) {
+        return times > 0 ? s + repeat(s, times - 1) : "";
     }
 
     // -------------------------------------------- //
     // Paging and chrome-tools like titleize
     // -------------------------------------------- //
 
-    private final static String TITLEIZE_LINE = repeat("_", 52);
-    private final static int TITLEIZE_BALANCE = -1;
+    public static String getMaterialName(Material material) {
+        return replace(material.toString(), "_", " ").toLowerCase();
+    }
 
     public static String titleize(String str) {
         String center = ".[ " + parseTags("<l>") + str + parseTags("<a>") + " ].";
@@ -281,5 +269,9 @@ public final class TextUtil {
         int from = pageZeroBased * 9;
         ret.addAll(lines.subList(from, Math.min(from + 9, lines.size())));
         return ret;
+    }
+
+    public String put(String key, String value) {
+        return TAGS.put(key, value);
     }
 }

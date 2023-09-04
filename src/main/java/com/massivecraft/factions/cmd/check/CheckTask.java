@@ -11,16 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CheckTask implements Runnable {
 
+    private static final int[] INTERVALS_MINUTES = {3, 5, 10, 15, 30};
+    private static final Calendar CALENDAR = Calendar.getInstance();
+    private static CheckTask instance;
     /**
      * @author Driftay
      */
 
     private final Map<Integer, List<String>> wallChecks = new ConcurrentHashMap<>();
     private final Map<Integer, List<String>> bufferChecks = new ConcurrentHashMap<>();
-    private static final int[] INTERVALS_MINUTES = {3, 5, 10, 15, 30};
-    private static final Calendar CALENDAR = Calendar.getInstance();
-
-    private static CheckTask instance;
 
     private CheckTask() {
         for (int interval : INTERVALS_MINUTES) {

@@ -11,7 +11,7 @@ public class FactionRenameEvent extends FactionPlayerEvent implements Cancellabl
      */
 
     private boolean cancelled = false;
-    private String tag;
+    private final String tag;
 
     public FactionRenameEvent(FPlayer sender, String newTag) {
         super(sender.getFaction(), sender);

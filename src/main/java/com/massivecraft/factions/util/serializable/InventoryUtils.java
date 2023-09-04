@@ -3,7 +3,7 @@ package com.massivecraft.factions.util.serializable;
 public class InventoryUtils {
     private int x;
     private int y;
-    private int rows;
+    private final int rows;
 
     public InventoryUtils(int x, int y, int rows) {
         this.x = x;

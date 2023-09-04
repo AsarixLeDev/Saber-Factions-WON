@@ -79,7 +79,7 @@ public class Persist {
             Logger.print("Using default as I failed to load: " + path, Logger.PrefixType.WARNING);
 
             // backup bad file, so user can attempt to recover their changes from it
-            Path backup = path.resolve( "_bad");
+            Path backup = path.resolve("_bad");
             try {
                 Files.deleteIfExists(backup);
             } catch (IOException exception) {
@@ -140,7 +140,8 @@ public class Persist {
 
         try {
             return FactionsPlugin.getInstance().getGson().fromJson(content, clazz);
-        } catch (Exception ex) {    // output the error message rather than full stack trace; error parsing the file, most likely
+        } catch (
+                Exception ex) {    // output the error message rather than full stack trace; error parsing the file, most likely
             Logger.print(ex.getMessage(), Logger.PrefixType.WARNING);
         }
 
@@ -163,7 +164,8 @@ public class Persist {
 
         try {
             return FactionsPlugin.getInstance().getGson().fromJson(content, typeOfT);
-        } catch (Exception ex) {    // output the error message rather than full stack trace; error parsing the file, most likely
+        } catch (
+                Exception ex) {    // output the error message rather than full stack trace; error parsing the file, most likely
             Logger.print(ex.getMessage(), Logger.PrefixType.WARNING);
         }
 

@@ -22,7 +22,7 @@ public class CmdCheck extends FCommand {
      * @author Driftay
      */
 
-    private SimpleDateFormat simpleDateFormat;
+    private final SimpleDateFormat simpleDateFormat;
 
     public CmdCheck() {
         this.simpleDateFormat = new SimpleDateFormat(Conf.dateFormat);

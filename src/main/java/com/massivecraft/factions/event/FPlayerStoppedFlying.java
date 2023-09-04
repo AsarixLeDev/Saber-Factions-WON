@@ -10,7 +10,7 @@ public class FPlayerStoppedFlying extends FactionPlayerEvent {
      */
 
     private static final HandlerList handlers = new HandlerList();
-    private FPlayer fPlayer;
+    private final FPlayer fPlayer;
 
 
     public FPlayerStoppedFlying(FPlayer fPlayer) {

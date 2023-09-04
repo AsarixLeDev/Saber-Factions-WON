@@ -55,28 +55,29 @@ public class AntiDupe implements Listener {
         if (!heldItemTypeName.endsWith("_BED") && !heldItemTypeName.equals("BED")) return;
 
         Block clickedBlock = event.getClickedBlock();
-        if (clickedBlock == null) return; // Shouldn't be null since we're making sure the action is right click block but just in case
+        if (clickedBlock == null)
+            return; // Shouldn't be null since we're making sure the action is right click block but just in case
 
         HashSet<Block> blocksToSearch = new HashSet<>();
         blocksToSearch.addAll(getAdjacentBlocks(clickedBlock.getLocation(), event.getBlockFace()));
-        blocksToSearch.addAll(getAdjacentBlocks(clickedBlock.getLocation().add(0,0,1), getYawBlockFace(player))); // Search adjacent to top-side of bed
+        blocksToSearch.addAll(getAdjacentBlocks(clickedBlock.getLocation().add(0, 0, 1), getYawBlockFace(player))); // Search adjacent to top-side of bed
 
         for (Block block : blocksToSearch) {
             String blockTypeName = block.getType().name();
             if (
                     blockTypeName.equals("WHEAT")
-                    || blockTypeName.equals("CARROTS")
-                    || blockTypeName.equals("CARROT")
-                    || blockTypeName.equals("NETHER_WARTS")
-                    || blockTypeName.equals("POTATOES")
-                    || blockTypeName.equals("POTATO")
-                    || blockTypeName.equals("BEETROOTS")
+                            || blockTypeName.equals("CARROTS")
+                            || blockTypeName.equals("CARROT")
+                            || blockTypeName.equals("NETHER_WARTS")
+                            || blockTypeName.equals("POTATOES")
+                            || blockTypeName.equals("POTATO")
+                            || blockTypeName.equals("BEETROOTS")
             ) {
                 event.setCancelled(true);
                 Logger.print(
                         "Player " + player.getName() + " tried duplicating crops with beds at" +
-                        " X:" + player.getLocation().getBlockX() + " Y:" + player.getLocation().getBlockY() + " Z:" + player.getLocation().getBlockZ() +
-                        " in world: " + player.getLocation().getWorld().getName()
+                                " X:" + player.getLocation().getBlockX() + " Y:" + player.getLocation().getBlockY() + " Z:" + player.getLocation().getBlockZ() +
+                                " in world: " + player.getLocation().getWorld().getName()
                 );
                 return;
             }
@@ -86,12 +87,12 @@ public class AntiDupe implements Listener {
     private HashSet<Block> getAdjacentBlocks(Location clickedBlockLocation, BlockFace blockFace) {
         HashSet<Block> adjacentBlocks = new HashSet<>();
         Location searchLocation = clickedBlockLocation.add(getDirection(blockFace));
-        adjacentBlocks.add(searchLocation.add(0,-1,0).getBlock()); // Down
-        adjacentBlocks.add(searchLocation.add(0,2,0).getBlock()); // Up
-        adjacentBlocks.add(searchLocation.add(-1,-1,0).getBlock()); // Left
-        adjacentBlocks.add(searchLocation.add(2,0,0).getBlock()); // Right
-        adjacentBlocks.add(searchLocation.add(-1,0,1).getBlock()); // Forward
-        adjacentBlocks.add(searchLocation.add(0,0,-2).getBlock()); // Downward
+        adjacentBlocks.add(searchLocation.add(0, -1, 0).getBlock()); // Down
+        adjacentBlocks.add(searchLocation.add(0, 2, 0).getBlock()); // Up
+        adjacentBlocks.add(searchLocation.add(-1, -1, 0).getBlock()); // Left
+        adjacentBlocks.add(searchLocation.add(2, 0, 0).getBlock()); // Right
+        adjacentBlocks.add(searchLocation.add(-1, 0, 1).getBlock()); // Forward
+        adjacentBlocks.add(searchLocation.add(0, 0, -2).getBlock()); // Downward
         return adjacentBlocks;
     }
 

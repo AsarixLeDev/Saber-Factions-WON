@@ -6,20 +6,12 @@ import java.util.List;
 
 public class Placeholder {
 
-    private String tag;
-    private String replace;
+    private final String tag;
+    private final String replace;
 
     public Placeholder(String tag, String replace) {
         this.tag = tag;
         this.replace = replace;
-    }
-
-    public String getReplace() {
-        return replace;
-    }
-
-    public String getTag() {
-        return tag;
     }
 
     public static List<String> replacePlaceholders(List<String> lore, Placeholder... placeholders) {
@@ -28,5 +20,13 @@ public class Placeholder {
                 lore.set(x, TextUtil.replace(lore.get(x), placeholder.getTag(), placeholder.getReplace()));
         }
         return lore;
+    }
+
+    public String getReplace() {
+        return replace;
+    }
+
+    public String getTag() {
+        return tag;
     }
 }

@@ -24,10 +24,9 @@ public enum GeneralTag implements Tag {
     TOTAL_ONLINE("{total-online}", () -> String.valueOf(Bukkit.getOnlinePlayers().size())),
     ;
 
+    public static GeneralTag[] VALUES = values();
     private final String tag;
     private final Supplier<String> supplier;
-
-    public static GeneralTag[] VALUES = values();
 
     GeneralTag(String tag, Supplier<String> supplier) {
         this.tag = tag;

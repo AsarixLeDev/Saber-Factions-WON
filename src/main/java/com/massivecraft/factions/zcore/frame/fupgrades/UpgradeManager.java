@@ -15,12 +15,18 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class UpgradeManager {
 
     private static UpgradeManager instance;
     private final HashMap<String, Integer> upgrades = new HashMap<>();
+
+    public static UpgradeManager getInstance() {
+        return instance == null ? instance = new UpgradeManager().loadUpgrades() : instance;
+    }
 
     public UpgradeManager loadUpgrades() {
         List<String> enabledUpgrade = FactionsPlugin.getInstance().getFileManager().getUpgrades().getConfig().getStringList("fupgrades.enabledUpgrade");
@@ -91,9 +97,5 @@ public class UpgradeManager {
             item.setItemMeta(itemMeta);
         }
         return item;
-    }
-
-    public static UpgradeManager getInstance() {
-        return instance == null ? instance = new UpgradeManager().loadUpgrades() : instance;
     }
 }

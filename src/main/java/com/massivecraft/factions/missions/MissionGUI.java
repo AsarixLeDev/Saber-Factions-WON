@@ -59,7 +59,7 @@ public class MissionGUI implements FactionGUI {
         //Because of what's mentioned before, we check on the next tick if the inventory that the player
         //is currently viewing is the same as this GUI, if it isn't, the updateItemsTask gets cancelled
         cancelTask = Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            if(player.getOpenInventory().getTopInventory() != inventory)
+            if (player.getOpenInventory().getTopInventory() != inventory)
                 if (updateItemsTask != null)
                     updateItemsTask.cancel();
         }, 1);
@@ -164,7 +164,7 @@ public class MissionGUI implements FactionGUI {
 
         long deadlineMillis = plugin.getFileManager().getMissions().getConfig().getLong("MissionDeadline", 0L);
 
-        if(deadlineMillis > 0L) {
+        if (deadlineMillis > 0L) {
             MissionHandler.setDeadlineTask(mission, fPlayer.getFaction(), deadlineMillis);
         }
 
@@ -196,7 +196,7 @@ public class MissionGUI implements FactionGUI {
             if (!missionName.equals("FillItem")) {
                 ConfigurationSection section = configurationSection.getConfigurationSection(missionName);
 
-                if(!section.getBoolean("enabled")) {
+                if (!section.getBoolean("enabled")) {
                     continue;
                 }
 
@@ -244,7 +244,7 @@ public class MissionGUI implements FactionGUI {
                                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeTillDeadline)))));
 
 
-                        if(updateItemsTask == null)
+                        if (updateItemsTask == null)
                             updateItemsTask = Bukkit.getScheduler().runTaskTimer(plugin, this::updateGUI, 20L, 20L);
                     }
 

@@ -15,10 +15,9 @@ public class CmdTop extends FCommand {
 
     /**
      * @author FactionsUUID Team - Modified By CmdrKittens
-     * 
      */
 
-    private static final Map<String, Comparator<Faction>> CRITERIA = new HashMap<String, Comparator<Faction>>(){{
+    private static final Map<String, Comparator<Faction>> CRITERIA = new HashMap<String, Comparator<Faction>>() {{
         put("members", (f1, f2) -> Integer.compare(f2.getFPlayers().size(), f1.getFPlayers().size()));
         put("start", (f1, f2) -> Long.compare(f2.getFoundedDate(), f1.getFoundedDate()));
         put("power", (f1, f2) -> Integer.compare(f2.getPowerRounded(), f1.getPowerRounded()));

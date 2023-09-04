@@ -16,7 +16,7 @@ public class LandClaimEvent extends FactionPlayerEvent implements Cancellable {
      */
 
     private boolean cancelled;
-    private FLocation location;
+    private final FLocation location;
 
     public LandClaimEvent(FLocation loc, Faction f, FPlayer p) {
         super(f, p);

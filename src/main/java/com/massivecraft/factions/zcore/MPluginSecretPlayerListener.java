@@ -16,7 +16,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 
 public class MPluginSecretPlayerListener implements Listener {
 
-    private MPlugin p;
+    private final MPlugin p;
 
     public MPluginSecretPlayerListener(MPlugin p) {
         this.p = p;

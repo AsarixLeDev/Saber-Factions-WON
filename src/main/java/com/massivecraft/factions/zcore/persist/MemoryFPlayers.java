@@ -16,9 +16,8 @@ import java.util.function.Consumer;
 
 public abstract class MemoryFPlayers extends FPlayers {
 
-    public Map<String, FPlayer> fPlayers = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
-
     private final Map<Player, FPlayer> bukkitFPlayers = new HashMap<>(Bukkit.getMaxPlayers());
+    public Map<String, FPlayer> fPlayers = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
 
     public void clean() {
         for (FPlayer fplayer : this.fPlayers.values()) {

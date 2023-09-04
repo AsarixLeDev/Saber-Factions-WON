@@ -26,6 +26,7 @@ public class BlockedEnchantments implements Listener {
                     enchants.put(enchantment, level);
                 }
             }
-        } catch (NumberFormatException ignored) {}
+        } catch (NumberFormatException ignored) {
+        }
     }
 }

@@ -18,12 +18,12 @@ public class TimerManager implements Listener, Runnable {
     private static final long MINUTE = TimeUnit.MINUTES.toMillis(1L);
     private static final long HOUR = TimeUnit.HOURS.toMillis(1L);
     private static final long MULTI_HOUR = TimeUnit.HOURS.toMillis(10);
+    public static boolean graceEnabled;
     private final Set<Timer> timers;
     private final FactionsPlugin plugin;
     private final List<TimerRunnable> timerRunnableList = new ArrayList<>();
     public GraceTimer graceTimer;
     private CustomFile config;
-    public static boolean graceEnabled;
 
 
     public TimerManager(FactionsPlugin plugin) {

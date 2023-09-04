@@ -51,6 +51,7 @@ public enum PlayerTag implements Tag {
     }),
     ;
 
+    public static final PlayerTag[] VALUES = PlayerTag.values();
     private final String tag;
     private final Function<FPlayer, String> function;
 
@@ -83,7 +84,5 @@ public enum PlayerTag implements Tag {
         String result = this.function.apply(player);
         return result == null ? null : TextUtil.replace(text, this.tag, result);
     }
-
-    public static final PlayerTag[] VALUES = PlayerTag.values();
 
 }

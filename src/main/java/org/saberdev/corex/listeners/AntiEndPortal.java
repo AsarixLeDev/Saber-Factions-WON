@@ -9,7 +9,7 @@ public class AntiEndPortal implements Listener {
 
     @EventHandler
     public void onTeleportEnd(PlayerPortalEvent e) {
-        if(e.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL && !e.getPlayer().isOp()) {
+        if (e.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL && !e.getPlayer().isOp()) {
             e.setCancelled(true);
         }
     }

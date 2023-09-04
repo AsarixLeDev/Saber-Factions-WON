@@ -64,7 +64,7 @@ Missions:
       Material: "SUGAR_CANE"
       Amount: 10000
     Reward:
-      Commands: ["f points add %faction% 100"]
+      Commands: [ "f points add %faction% 100" ]
   zombie:
     enabled: true
     Slot: 15
@@ -79,7 +79,7 @@ Missions:
       EntityType: "ZOMBIE"
       Amount: 1000
     Reward:
-      Commands: ["f points add %faction% 100"]
+      Commands: [ "f points add %faction% 100" ]
   fishing:
     enabled: true
     Slot: 13
@@ -93,7 +93,7 @@ Missions:
       Type: "FISH"
       Amount: 100
     Reward:
-      Commands: ["f points add %faction% 100"]
+      Commands: [ "f points add %faction% 100" ]
   animaltaming:
     enabled: true
     Slot: 20
@@ -108,7 +108,7 @@ Missions:
       EntityType: "ALL"
       Amount: 100
     Reward:
-      Commands: ["f points add %faction% 100"]
+      Commands: [ "f points add %faction% 100" ]
   enchant:
     enabled: true
     Slot: 22
@@ -122,7 +122,7 @@ Missions:
       Type: "ENCHANT"
       Amount: 100
     Reward:
-      Commands: ["f points add %faction% 100"]
+      Commands: [ "f points add %faction% 100" ]
   consume:
     enabled: true
     Slot: 24
@@ -138,4 +138,4 @@ Missions:
       Item: "COOKED_BEEF"
       Amount: 100
     Reward:
-      Commands: ["f points add %faction% 100"]
+      Commands: [ "f points add %faction% 100" ]

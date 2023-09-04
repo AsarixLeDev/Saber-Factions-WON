@@ -16,7 +16,7 @@ import java.util.Set;
 
 public class CmdConfig extends FCommand {
 
-    private static HashMap<String, String> properFieldNames = new HashMap<>();
+    private static final HashMap<String, String> properFieldNames = new HashMap<>();
 
     public CmdConfig() {
         super();

@@ -24,7 +24,7 @@ public class AntiBlockPlace implements Listener {
     @EventHandler
     public void onDeniedPlace(BlockPlaceEvent e) {
         Player player = e.getPlayer();
-        if(!player.isOp() && deniedMatList.contains(e.getBlockPlaced().getType())) {
+        if (!player.isOp() && deniedMatList.contains(e.getBlockPlaced().getType())) {
             e.setCancelled(true);
         }
     }

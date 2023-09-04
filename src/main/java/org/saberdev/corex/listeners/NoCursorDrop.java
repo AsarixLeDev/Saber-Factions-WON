@@ -9,9 +9,9 @@ import org.bukkit.inventory.ItemStack;
 public class NoCursorDrop implements Listener {
 
     @EventHandler
-    public void onInventoryClose(InventoryCloseEvent e){
+    public void onInventoryClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
-        if(player.getInventory().firstEmpty() != -1 && !player.isDead() && player.getHealth() > 0.0) {
+        if (player.getInventory().firstEmpty() != -1 && !player.isDead() && player.getHealth() > 0.0) {
             ItemStack itemOnCursor = player.getItemOnCursor().clone();
             player.setItemOnCursor(null);
             player.getInventory().addItem(itemOnCursor);

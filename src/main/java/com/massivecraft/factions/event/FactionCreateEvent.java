@@ -18,8 +18,8 @@ public class FactionCreateEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
 
-    private String factionTag;
-    private Player sender;
+    private final String factionTag;
+    private final Player sender;
     private boolean cancelled;
 
     public FactionCreateEvent(Player sender, String tag) {

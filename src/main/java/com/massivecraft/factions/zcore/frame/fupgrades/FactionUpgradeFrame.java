@@ -25,7 +25,7 @@ import java.util.Map;
  */
 public class FactionUpgradeFrame extends SaberGUI {
 
-    private Faction faction;
+    private final Faction faction;
 
     public FactionUpgradeFrame(Player player, Faction faction) {
         super(player, CC.translate(FactionsPlugin.getInstance().getFileManager().getUpgrades().getConfig()

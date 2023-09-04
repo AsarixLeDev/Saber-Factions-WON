@@ -23,8 +23,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Creation Date: 10/27/2020
  */
 public class AsyncPlayerMap implements Runnable, Listener {
-    private volatile Map<String, Player> players = new ConcurrentHashMap<>();
-    private volatile Map<String, Location> locations = new ConcurrentHashMap<>();
+    private final Map<String, Player> players = new ConcurrentHashMap<>();
+    private final Map<String, Location> locations = new ConcurrentHashMap<>();
 
     public AsyncPlayerMap(Plugin bukkitPlugin) {
         Bukkit.getPluginManager().registerEvents(this, bukkitPlugin);

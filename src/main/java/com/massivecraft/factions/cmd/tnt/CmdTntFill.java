@@ -19,18 +19,17 @@ import org.bukkit.block.Dispenser;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class CmdTntFill extends FCommand {
 
-    private Map<Player, TNTFillTask> fillTaskMap;
+    private final Map<Player, TNTFillTask> fillTaskMap;
 
-    private boolean tntFillEnabled;
-    private int maxTntFillRadius;
-    private int maxTntFillAmount;
+    private final boolean tntFillEnabled;
+    private final int maxTntFillRadius;
+    private final int maxTntFillAmount;
 
     public CmdTntFill() {
         super();

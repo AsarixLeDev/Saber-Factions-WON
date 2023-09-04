@@ -25,7 +25,7 @@ public class PermissableActionFrame extends SaberGUI {
      * @author Illyria Team
      */
 
-    private Permissable perm;
+    private final Permissable perm;
 
     public PermissableActionFrame(Player player, Faction f, Permissable perm) {
         super(player, CC.translate(Objects.requireNonNull(FactionsPlugin.getInstance().getFileManager().getFperms().getConfig().getString("fperm-gui.action.name")).replace("{faction}", f.getTag())), FactionsPlugin.getInstance().getFileManager().getFperms().getConfig().getInt("fperm-gui.action.rows") * 9);

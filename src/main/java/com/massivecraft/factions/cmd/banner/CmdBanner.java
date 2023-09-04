@@ -55,8 +55,6 @@ public class CmdBanner extends FCommand {
     }
 
 
-
-
     @Override
     public TL getUsageTranslation() {
         return TL.COMMAND_BANNER_DESCRIPTION;

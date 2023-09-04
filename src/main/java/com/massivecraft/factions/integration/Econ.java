@@ -1,6 +1,8 @@
 package com.massivecraft.factions.integration;
 
-import com.massivecraft.factions.*;
+import com.massivecraft.factions.Conf;
+import com.massivecraft.factions.FPlayer;
+import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.iface.EconomyParticipator;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.struct.Role;
@@ -8,7 +10,6 @@ import com.massivecraft.factions.util.Logger;
 import com.massivecraft.factions.util.RelationUtil;
 import com.massivecraft.factions.zcore.util.TL;
 import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -25,8 +26,8 @@ public class Econ {
      */
 
     private static final DecimalFormat format = new DecimalFormat(TL.ECON_FORMAT.toString());
-    private static Economy econ = null;
     private static final DecimalFormat COMMA_FORMAT = new DecimalFormat("#,##0");
+    private static Economy econ = null;
 
     public static void setup() {
         if (isSetup()) return;

@@ -32,10 +32,14 @@ import java.util.regex.Pattern;
 
 public abstract class MPlugin extends JavaPlugin {
 
+    private static final Pattern ARGUMENT_DELIMITER = Pattern.compile("\\s+");
+    // Our stored base commands
+    private final Map<String, MCommand<?>> baseCommands = new HashMap<>();
+    // holds f stuck start times
+    private final Map<UUID, Long> timers = new HashMap<>();
     // Some utils
     public Persist persist;
     public PermUtil perm;
-
     public String refCommand = "";
     //holds f stuck taskids
     public Map<UUID, Integer> stuckMap = new HashMap<>();
@@ -45,14 +49,6 @@ public abstract class MPlugin extends JavaPlugin {
     protected boolean loadSuccessful = false;
     private Integer saveTask = null;
     private boolean autoSave = true;
-
-    // Our stored base commands
-    private final Map<String, MCommand<?>> baseCommands = new HashMap<>();
-
-    private static final Pattern ARGUMENT_DELIMITER = Pattern.compile("\\s+");
-    // holds f stuck start times
-    private final Map<UUID, Long> timers = new HashMap<>();
-
     // -------------------------------------------- //
     // ENABLE
     // -------------------------------------------- //

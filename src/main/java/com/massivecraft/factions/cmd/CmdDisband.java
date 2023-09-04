@@ -22,7 +22,7 @@ public class CmdDisband extends FCommand {
      * @author FactionsUUID Team - Modified By CmdrKittens
      */
 
-    private static HashMap<String, String> disbandMap = new HashMap<>();
+    private static final HashMap<String, String> disbandMap = new HashMap<>();
 
 
     public CmdDisband() {

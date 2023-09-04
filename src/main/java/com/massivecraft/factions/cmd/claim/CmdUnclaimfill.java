@@ -63,10 +63,10 @@ public class CmdUnclaimfill extends FCommand {
 
         if (!bypass &&
                 ((forFaction.isNormal() && forFaction.getAccess(context.fPlayer, PermissableAction.TERRITORY) != Access.ALLOW)
-                                ||
-                                (forFaction.isWarZone() && !Permission.MANAGE_WAR_ZONE.has(context.player))
-                                ||
-                                (forFaction.isSafeZone() && !Permission.MANAGE_SAFE_ZONE.has(context.player)))) {
+                        ||
+                        (forFaction.isWarZone() && !Permission.MANAGE_WAR_ZONE.has(context.player))
+                        ||
+                        (forFaction.isSafeZone() && !Permission.MANAGE_SAFE_ZONE.has(context.player)))) {
             context.msg(TL.CLAIM_CANTUNCLAIM, forFaction.describeTo(context.fPlayer));
             return;
         }
@@ -136,16 +136,6 @@ public class CmdUnclaimfill extends FCommand {
         }
     }
 
-    private static class Tracker {
-        private int successes;
-        private int fails;
-        private double refund;
-
-        private int count() {
-            return successes + fails;
-        }
-    }
-
     private void addIf(Set<FLocation> toClaim, Queue<FLocation> queue, FLocation examine, Faction replacement) {
         if (Board.getInstance().getFactionAt(examine) == replacement && !toClaim.contains(examine)) {
             toClaim.add(examine);
@@ -186,5 +176,15 @@ public class CmdUnclaimfill extends FCommand {
     @Override
     public TL getUsageTranslation() {
         return TL.COMMAND_UNCLAIMFILL_DESCRIPTION;
+    }
+
+    private static class Tracker {
+        private int successes;
+        private int fails;
+        private double refund;
+
+        private int count() {
+            return successes + fails;
+        }
     }
 }

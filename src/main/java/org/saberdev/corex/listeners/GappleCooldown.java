@@ -17,9 +17,9 @@ public class GappleCooldown implements Listener {
     private final Lazy<Material> enchantedGoldenApple = Lazy.of(XMaterial.ENCHANTED_GOLDEN_APPLE::parseMaterial);
 
     @EventHandler
-    public void onEatGapple(PlayerItemConsumeEvent e){
-        if(e.getItem().getType() == this.enchantedGoldenApple.get()) {
-            if(Cooldown.isOnCooldown(e.getPlayer(), "godAppleCooldown")) {
+    public void onEatGapple(PlayerItemConsumeEvent e) {
+        if (e.getItem().getType() == this.enchantedGoldenApple.get()) {
+            if (Cooldown.isOnCooldown(e.getPlayer(), "godAppleCooldown")) {
                 e.setCancelled(true);
                 long remaining = e.getPlayer().getMetadata("godAppleCooldown").get(0).asLong() - System.currentTimeMillis();
                 int remainSec = (int) (remaining / 1000L);

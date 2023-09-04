@@ -26,11 +26,11 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 public abstract class GUIMenu {
-    private static Map<UUID, GUIMenu> menus = new HashMap<>();
+    private static final Map<UUID, GUIMenu> menus = new HashMap<>();
     protected Inventory menu;
-    private Map<Integer, ClickableItemStack> menuItems = new HashMap<>();
+    private final Map<Integer, ClickableItemStack> menuItems = new HashMap<>();
     private Consumer<InventoryCloseEvent> closeCallback;
-    private String name;
+    private final String name;
     private int size;
     private GUIMenu previousMenu;
 

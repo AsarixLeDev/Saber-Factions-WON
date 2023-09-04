@@ -7,7 +7,7 @@ import com.massivecraft.factions.zcore.fperms.Access;
 import com.massivecraft.factions.zcore.fperms.PermissableAction;
 import com.massivecraft.factions.zcore.util.TL;
 
-public class  CommandRequirements {
+public class CommandRequirements {
 
     /**
      * @author FactionsUUID Team - Modified By CmdrKittens
@@ -97,7 +97,7 @@ public class  CommandRequirements {
 
     public static class Builder {
 
-        private Permission permission;
+        private final Permission permission;
 
         private boolean playerOnly = false;
         private boolean memberOnly = false;

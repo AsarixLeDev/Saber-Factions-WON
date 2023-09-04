@@ -19,7 +19,7 @@ public class CustomFile {
 
     private File file;
     private YamlConfiguration fileConfig;
-    private HashMap<String, Object> cachedObjects = new HashMap<>();
+    private final HashMap<String, Object> cachedObjects = new HashMap<>();
 
     public CustomFile(File file) {
         this.file = file;
@@ -51,7 +51,7 @@ public class CustomFile {
             resource = FactionsPlugin.getInstance().getResource(file.getName());
         }
 
-        if(resource == null)
+        if (resource == null)
             return;
         YamlConfiguration defaultConf = YamlConfiguration.loadConfiguration(new InputStreamReader(resource));
         getConfig().setDefaults(defaultConf);

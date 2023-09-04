@@ -33,12 +33,11 @@ import java.util.function.Supplier;
  * Unlike standard {@link Supplier<L>}, this will cache the
  * result upon first request.
  *
- * @author Atilt
- *
  * @param <L> the type of object
+ * @author Atilt
  */
 public final class Lazy<L> implements Supplier<L> {
-    
+
     private final Supplier<L> handle;
     private L value;
 
@@ -57,9 +56,8 @@ public final class Lazy<L> implements Supplier<L> {
      * The underlying supplier that will provide
      * the cached value.
      *
-     * @since 1.0.0
-     *
      * @return the original supplier
+     * @since 1.0.0
      */
     @Nonnull
     public Supplier<L> handle() {
@@ -70,9 +68,8 @@ public final class Lazy<L> implements Supplier<L> {
      * The lazy is set to be empty if the value of
      * the underlying supplier has not yet been cached.
      *
-     * @since 1.0.0
-     *
      * @return if the cached value is present
+     * @since 1.0.0
      */
     public boolean empty() {
         return this.value == null;
@@ -82,9 +79,8 @@ public final class Lazy<L> implements Supplier<L> {
      * Returns the cached value, or caches then returns
      * the value if not yet cached.
      *
-     * @since 1.0.0
-     *
      * @return the cached value
+     * @since 1.0.0
      */
     @Override
     public L get() {

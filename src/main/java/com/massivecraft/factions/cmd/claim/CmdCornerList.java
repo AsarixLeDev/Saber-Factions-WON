@@ -31,12 +31,12 @@ public class CmdCornerList extends FCommand {
 
     @Override
     public void perform(CommandContext context) {
-        if(context.args.size() == 0) {
+        if (context.args.size() == 0) {
             //send player location world corners
             handleCornerList(context.fPlayer, context.player.getWorld());
-        } else if(context.args.size() == 1) {
+        } else if (context.args.size() == 1) {
             World world = Bukkit.getWorld(context.args.get(0));
-            if(world == null) {
+            if (world == null) {
                 context.msg(TL.INVALID_WORLD.toString().replace("{world}", context.args.get(0)));
                 return;
             }
@@ -51,8 +51,8 @@ public class CmdCornerList extends FCommand {
         ArrayList<Component> ret = new ArrayList<>();
         ret.add(Component.text(TextUtil.titleize(TL.COMMAND_CORNERLIST_TITLE.toString().replace("{world}", world.getName()))));
 
-        for(FLocation fLocation : FactionsPlugin.getInstance().getFactionsPlayerListener().getCorners()) {
-            if(fLocation.getWorld() == world) {
+        for (FLocation fLocation : FactionsPlugin.getInstance().getFactionsPlayerListener().getCorners()) {
+            if (fLocation.getWorld() == world) {
                 ret.add(Component.text(CC.translate("&2Faction At &e" + fLocation.getX() + ", &e" + fLocation.getZ() + ": &r" + Board.getInstance().getFactionAt(fLocation).getTag())));
             }
         }

@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class AntiPistonGlitch implements Listener {
 
-    private final Lazy<Set<Material>> materials = Lazy.of(() -> Collections.unmodifiableSet(new HashSet<Material>(){{
+    private final Lazy<Set<Material>> materials = Lazy.of(() -> Collections.unmodifiableSet(new HashSet<Material>() {{
         add(XMaterial.SUGAR_CANE.parseMaterial());
         add(XMaterial.MELON.parseMaterial());
         add(XMaterial.MELON_STEM.parseMaterial());

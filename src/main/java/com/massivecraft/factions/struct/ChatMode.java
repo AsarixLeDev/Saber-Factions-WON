@@ -24,14 +24,6 @@ public enum ChatMode {
         this.modeMessage = modeMessage;
     }
 
-    public boolean isAtLeast(ChatMode role) {
-        return this.value >= role.value;
-    }
-
-    public boolean isAtMost(ChatMode role) {
-        return this.value <= role.value;
-    }
-
     public static ChatMode fromString(char c) {
         switch (c) {
             case 'p':
@@ -47,6 +39,14 @@ public enum ChatMode {
             default:
                 return null;
         }
+    }
+
+    public boolean isAtLeast(ChatMode role) {
+        return this.value >= role.value;
+    }
+
+    public boolean isAtMost(ChatMode role) {
+        return this.value <= role.value;
     }
 
     @Override

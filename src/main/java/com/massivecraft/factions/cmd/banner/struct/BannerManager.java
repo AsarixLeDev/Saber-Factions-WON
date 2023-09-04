@@ -8,13 +8,12 @@ import java.util.Map;
 
 public class BannerManager {
 
+    private final Map<String, FactionBanner> factionBannerMap = (new MapMaker())
+            .concurrencyLevel(32).makeMap();
+
     public Map<String, FactionBanner> getFactionBannerMap() {
         return this.factionBannerMap;
     }
-
-    private Map<String, FactionBanner> factionBannerMap = (new MapMaker())
-            .concurrencyLevel(32).makeMap();
-
 
     public void onEnable(FactionsPlugin plugin) {
         (new BukkitRunnable() {
