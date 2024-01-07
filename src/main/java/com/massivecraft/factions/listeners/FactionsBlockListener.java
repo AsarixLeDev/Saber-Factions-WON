@@ -4,8 +4,6 @@ import cc.javajobs.wgbridge.WorldGuardBridge;
 import cc.javajobs.wgbridge.infrastructure.struct.WGRegion;
 import cc.javajobs.wgbridge.infrastructure.struct.WGRegionSet;
 import cc.javajobs.wgbridge.infrastructure.struct.WGState;
-import ch.asarix.areamarkets.AreaMarkets;
-import ch.asarix.areamarkets.BlockEventHandler;
 import com.cryptomorin.xseries.XMaterial;
 import com.massivecraft.factions.*;
 import com.massivecraft.factions.struct.Permission;
@@ -34,7 +32,6 @@ import java.util.concurrent.TimeUnit;
 
 public class FactionsBlockListener implements Listener {
 
-    private BlockEventHandler blockEventHandler = null;
     private final long placeTimer = TimeUnit.SECONDS.toMillis(15L);
 
     public static boolean canBuildWG(Location location) {
@@ -137,18 +134,12 @@ public class FactionsBlockListener implements Listener {
         return CheckPlayerAccess(me.getPlayer(), me, location, target, target.getAccess(me, action), action, pain);
     }
 
-    private BlockEventHandler getBlockEventHandler() {
-        if (blockEventHandler == null)
-            blockEventHandler = AreaMarkets.getInstance().getBlockEventHandler();
-        return blockEventHandler;
-    }
-
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockPlace(BlockPlaceEvent event) {
         if (!event.canBuild()) return;
         if (event.getBlockPlaced().getType() == Material.FIRE) return;
         boolean isSpawner = event.getBlock().getType().equals(XMaterial.SPAWNER.parseMaterial());
-        if (getBlockEventHandler().shouldByPassClaim(event)) return;
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) return;
         if (!playerCanBuildDestroyBlock(event.getPlayer(), event.getBlock().getLocation(), "build", false)) {
             event.setCancelled(true);
             return;
@@ -189,7 +180,7 @@ public class FactionsBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockDamage(BlockDamageEvent event) {
-        if (getBlockEventHandler().shouldByPassClaim(event)) return;
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) return;
         if (event.getInstaBreak() && !playerCanBuildDestroyBlock(event.getPlayer(), event.getBlock().getLocation(), "destroy", false)) {
             event.setCancelled(true);
         }
@@ -315,7 +306,7 @@ public class FactionsBlockListener implements Listener {
     public void onFrostWalker(EntityBlockFormEvent event) {
         if (event.getEntity() == null || event.getEntity().getType() != EntityType.PLAYER || event.getBlock() == null)
             return;
-        if (getBlockEventHandler().shouldByPassClaim(event)) return;
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) return;
         Player player = (Player) event.getEntity();
         Location location = event.getBlock().getLocation();
 
@@ -335,7 +326,7 @@ public class FactionsBlockListener implements Listener {
 
         if (!FactionsPlugin.getInstance().getConfig().getBoolean("Falling-Block-Fix.Enabled"))
             return;
-        if (getBlockEventHandler().shouldByPassClaim(event)) return;
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) return;
         Faction faction = Board.getInstance().getFactionAt(FLocation.wrap(event.getBlock()));
         if (faction.isWarZone() || faction.isSafeZone()) {
             event.getBlock().setType(Material.AIR);
@@ -359,7 +350,7 @@ public class FactionsBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
-        if (getBlockEventHandler().shouldByPassClaim(event)) return;
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) return;
         //If there is an error its much safer to not allow the block to be broken
         try {
             Block block = event.getBlock();
@@ -389,7 +380,7 @@ public class FactionsBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void FrameRemove(HangingBreakByEntityEvent event) {
-        if (getBlockEventHandler().shouldByPassClaim(event)) return;
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) return;
         if (event.getRemover() == null) return;
         if ((event.getRemover() instanceof Player)) {
             if (event.getEntity().getType().name().contains("ITEM_FRAME")) {
@@ -404,7 +395,7 @@ public class FactionsBlockListener implements Listener {
     @EventHandler
     public void onFarmLandDamage(EntityChangeBlockEvent event) {
 
-        if (getBlockEventHandler().shouldByPassClaim(event)) return;
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) return;
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
             if (!playerCanBuildDestroyBlock(player, event.getBlock().getLocation(), "destroy", true)) {

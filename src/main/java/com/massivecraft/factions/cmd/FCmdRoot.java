@@ -12,6 +12,7 @@ import com.massivecraft.factions.cmd.chest.CmdChest;
 import com.massivecraft.factions.cmd.claim.*;
 import com.massivecraft.factions.cmd.drain.CmdDrain;
 import com.massivecraft.factions.cmd.econ.CmdMoney;
+import com.massivecraft.factions.cmd.econ.CmdMoneyGiveF;
 import com.massivecraft.factions.cmd.grace.CmdGrace;
 import com.massivecraft.factions.cmd.points.CmdPoints;
 import com.massivecraft.factions.cmd.relational.*;
@@ -173,6 +174,7 @@ public class FCmdRoot extends FCommand implements CommandExecutor {
     public CmdJoin cmdJoin = new CmdJoin();
     public CmdKick cmdKick = new CmdKick();
     public CmdAllyFWarp cmdAllyFWarp = new CmdAllyFWarp();
+    public CmdMoneyGiveF cmdMoneyGiveF = new CmdMoneyGiveF();
 
 
     //Variables to know if we already set up certain sub commands
@@ -206,6 +208,7 @@ public class FCmdRoot extends FCommand implements CommandExecutor {
         this.setHelpShort("The faction base command");
         this.helpLong.add(TextUtil.parseTags("<i>This command contains all faction stuff."));
 
+        this.addSubCommand(this.cmdMoneyGiveF);
         this.addSubCommand(this.cmdAllyFWarp);
         this.addSubCommand(this.cmdAdmin);
         this.addSubCommand(this.cmdAutoClaim);

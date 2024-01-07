@@ -2,10 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>ch.asarix</groupId>
+        <artifactId>WONProject</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <groupId>com.massivecraft</groupId>
     <artifactId>Factions</artifactId>
     <version>1.6.9.5-4.1.2-STABLE</version>
-    <packaging>jar</packaging>
+<!--    <packaging>jar</packaging>-->
 
     <name>SaberFactions</name>
 
@@ -39,6 +45,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M7</version>
+            </plugin>
+            <!-- Plugin pour changer le répertoire de sortie du JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <outputDirectory>${project.basedir}/../plugins</outputDirectory>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -150,13 +165,6 @@
                     <groupId>org.bukkit</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>ch.asarix</groupId>
-            <artifactId>AreaMarkets</artifactId>
-            <scope>system</scope>
-            <version>1.0-SNAPSHOT</version>
-            <systemPath>${project.basedir}/dependencies/AreaMarkets-1.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>mcMMO</groupId>
