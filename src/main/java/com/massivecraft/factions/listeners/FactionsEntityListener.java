@@ -41,7 +41,6 @@ public class FactionsEntityListener implements Listener {
      * Who can I hurt? I can never hurt members or allies. I can always hurt enemies. I can hurt neutrals as long as
      * they are outside their own territory.
      */
-
     public static Set<UUID> combatList = new HashSet<>();
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -497,10 +496,20 @@ public class FactionsEntityListener implements Listener {
 
         Relation relation = defendFaction.getRelationTo(attackFaction);
 
-        if (Conf.disablePVPBetweenNeutralFactions && relation.isNeutral()) {
-            if (notify)
-                attacker.msg(TL.PLAYER_PVP_NEUTRAL);
-            return false;
+        if (relation.isNeutral()) {
+            System.out.println("neutral");
+            if (Conf.disablePVPBetweenNeutralFactions) {
+                if (notify)
+                    attacker.msg(TL.PLAYER_PVP_NEUTRAL);
+                return false;
+            }
+            if (defLocFaction == defendFaction) {
+                System.out.println("defloc");
+                if (notify) {
+                    attacker.msg("Le PVP en territoire neutre est désactivé !");
+                }
+                return false;
+            }
         }
 
         if (!defender.hasFaction())

@@ -606,12 +606,10 @@ public class FactionsPlayerListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction().equals(Action.LEFT_CLICK_AIR) || event.getAction().equals(Action.LEFT_CLICK_BLOCK))
             return;
-
         Block block = event.getClickedBlock();
         Player player = event.getPlayer();
 
         if (block == null) return;
-
         XMaterial type = null;
         try {
             type = event.getItem() == null ? null : XMaterial.matchXMaterial(event.getItem());
@@ -626,7 +624,6 @@ public class FactionsPlayerListener implements Listener {
         if (Conf.allowCreeperEggingChests && block.getType() == Material.CHEST && type == XMaterial.CREEPER_SPAWN_EGG && event.getPlayer().isSneaking()) {
             return;
         }
-
         // territoryBypasssProtectedMaterials totally bypass the protection system
         if (Conf.territoryBypassProtectedMaterials.contains(block.getType())) return;
         // Do type null checks so if XMaterial has a parsing issue and fills null as a value it will not bypass.
@@ -638,6 +635,9 @@ public class FactionsPlayerListener implements Listener {
         //    }
         //}
 
+        if (ClaimByPassHandler.getInstance().shouldByPassClaim(event)) {
+            return;
+        }
         if (GetPermissionFromUsableBlock(block.getType()) != null) {
             if (!canPlayerUseBlock(player, block, false)) {
                 event.setCancelled(true);

@@ -32,6 +32,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public abstract class MemoryFaction implements Faction, EconomyParticipator {
     public HashMap<Integer, String> rules = new HashMap<>();
@@ -512,6 +513,9 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
     @Override
     public void setChestSize(int chestSize) {
         ItemStack[] contents = this.getChestInventory().getContents();
+        if (contents.length > chestSize) {
+            contents = Arrays.stream(contents).limit(chestSize).toArray(ItemStack[]::new);
+        }
         chest = Bukkit.createInventory(null, chestSize, CC.translate(FactionsPlugin.getInstance().getConfig().getString("fchest.Inventory-Title")));
         chest.setContents(contents);
     }
@@ -525,9 +529,9 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
 
     @Override
     public int getWarpsLimit() {
-        if (warpLimit == 0) {
-            return FactionsPlugin.getInstance().getConfig().getInt("max-warps");
-        }
+//        if (warpLimit == 0) {
+//            return FactionsPlugin.getInstance().getConfig().getInt("max-warps");
+//        }
         return warpLimit;
     }
 
@@ -568,6 +572,7 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
     }
 
     public void setUpgrade(String upgrade, int level) {
+        if (level == 0) upgrades.remove(upgrade);
         upgrades.put(upgrade, level);
     }
 
